@@ -1,6 +1,6 @@
 #include "Application.h"
 
-//TODO: Move graphics code to its own file 
+//TODO: Store loaded shaders in Graphics Manager
 int WINAPI WinMain(HINSTANCE instance, HINSTANCE hPreviousInstance, LPSTR, int show)
 {
 	SetPriorityClass(GetCurrentProcess(), ABOVE_NORMAL_PRIORITY_CLASS);

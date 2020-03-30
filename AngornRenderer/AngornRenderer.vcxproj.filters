@@ -25,6 +25,9 @@
     <Filter Include="Source Files\Core\Graphics">
       <UniqueIdentifier>{99153282-6752-49b5-9691-ef10c9c9bc73}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Core\Application">
+      <UniqueIdentifier>{fd2dea8b-f495-44c8-8810-6dff989a3959}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="RenderView.cpp">
@@ -36,24 +39,33 @@
     <ClCompile Include="InputManager.cpp">
       <Filter>Source Files\Core\Input</Filter>
     </ClCompile>
+    <ClCompile Include="Renderer.cpp">
+      <Filter>Source Files\Core\Graphics</Filter>
+    </ClCompile>
     <ClCompile Include="Application.cpp">
-      <Filter>Source Files\Core</Filter>
+      <Filter>Source Files\Core\Application</Filter>
+    </ClCompile>
+    <ClCompile Include="Shader.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ISystem.h">
-      <Filter>Source Files\Core\Input</Filter>
-    </ClInclude>
     <ClInclude Include="RenderView.h">
       <Filter>Source Files\Core\Window</Filter>
     </ClInclude>
     <ClInclude Include="InputManager.h">
       <Filter>Source Files\Core\Input</Filter>
     </ClInclude>
-    <ClInclude Include="Application.h">
+    <ClInclude Include="Renderer.h">
+      <Filter>Source Files\Core\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="ISystem.h">
       <Filter>Source Files\Core</Filter>
     </ClInclude>
-    <ClInclude Include="Renderer.h">
+    <ClInclude Include="Application.h">
+      <Filter>Source Files\Core\Application</Filter>
+    </ClInclude>
+    <ClInclude Include="Shader.h">
       <Filter>Source Files\Core\Graphics</Filter>
     </ClInclude>
   </ItemGroup>

@@ -3,6 +3,8 @@
 
 #include "ISystem.h"
 
+#include <Windows.h>
+
 class Renderer : public ISystem
 {
 public:
@@ -21,5 +23,10 @@ private:
 	Renderer() {}
 	static Renderer* instance_;
 
+	HDC deviceContext_;
+	HGLRC renderContext_;
+
+	int glMajorVersion_ = 4;
+	int glMinorVersion_ = 2;
 };
 #endif
