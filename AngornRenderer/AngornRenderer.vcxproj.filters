@@ -22,6 +22,9 @@
     <Filter Include="Source Files\Core\Input">
       <UniqueIdentifier>{05f8e9b5-3f53-4f76-83e5-95ca4f6f47a8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Core\Graphics">
+      <UniqueIdentifier>{99153282-6752-49b5-9691-ef10c9c9bc73}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="RenderView.cpp">
@@ -49,6 +52,9 @@
     </ClInclude>
     <ClInclude Include="Application.h">
       <Filter>Source Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer.h">
+      <Filter>Source Files\Core\Graphics</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

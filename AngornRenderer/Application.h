@@ -15,12 +15,11 @@ public:
 		return instance_;
 	}
 
-	Application(HINSTANCE hinstance, int show, int WindowWidth, int WindowHeight, const char * WindowTitle);
+	void RunApplication(HINSTANCE hinstance, int show, int WindowWidth, int WindowHeight, const char * WindowTitle);
+
 	void Initialize();
 	void Update(float dt = 0);
 	void Shutdown();
-	void Exit();
-
 
 
 private:
