@@ -115,18 +115,8 @@ void Camera::RotateCamera(float dt)
 	// the middle of the screen in the x and y direction
 	glm::vec2 middleScreenCoords(0, 0);
 
-
 	// vector that describes mousePOSITION - center
 	glm::vec2 MouseDirection(0, 0);
-
-	// static variable to store the rotation about the x-axis, since
-	// we want to limit how far up or down we can look.
-	// We don't need to cap the rotation about the y-axis as we
-	// want to be able to turn around 360 degrees
-	static double CurrentRotationAboutX = 0.0;
-
-	// The maximum angle we can look up or down, in radians
-	double maxAngle = 1;
 
 	// This function gets the POSITION of the mouse
 	if (useMouse_)	
