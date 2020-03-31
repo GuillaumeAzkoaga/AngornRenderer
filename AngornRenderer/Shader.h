@@ -8,25 +8,15 @@
 class Shader
 {
 public:
-	enum ShaderType
-	{
-		ST_Vertex,
-		ST_TessControl,
-		ST_TessEval,
-		ST_Geometry,
-		ST_Fragment,
-		ST_AMOUNT
-	};
-
-	Shader();
+	Shader(const GLenum type, const std::string name);
 	~Shader();
 
-	bool CreateShader(GLenum type, const std::string& name);
-	bool CompileShader();
-
-	GLuint GetShader() const;
+	GLuint getShader() const;
 
 private:
+	void CreateShader(const GLenum type, const std::string name);
+	void CompileShader() const;
+
 	GLuint shader_;
 	GLenum type_;
 	std::string name_;

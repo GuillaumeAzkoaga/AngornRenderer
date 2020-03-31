@@ -3,10 +3,12 @@
 #include <sstream>
 #include <Windows.h>
 
-Shader::Shader()
-	: type_(0), name_(), shader_(0)
-{
 
+
+Shader::Shader(const GLenum type, const std::string name)
+{
+	CreateShader(type, name);
+	CompileShader();
 }
 
 Shader::~Shader()
@@ -14,7 +16,7 @@ Shader::~Shader()
 	glDeleteShader(shader_);
 }
 
-bool Shader::CreateShader(GLenum type, const std::string& name)
+void Shader::CreateShader(const GLenum type, const std::string name)
 {
 	type_ = type;
 	name_ = name;
@@ -24,8 +26,7 @@ bool Shader::CreateShader(GLenum type, const std::string& name)
 	if (shader_ == 0)
 	{
 		MessageBox(NULL, "Could not create shader", "Shader Creation Error", MB_TASKMODAL | MB_SETFOREGROUND | MB_ICONERROR);
-
-		return false;
+		return;
 	}
 
 	std::ifstream file(name);
@@ -41,22 +42,22 @@ bool Shader::CreateShader(GLenum type, const std::string& name)
 	{
 		MessageBox(NULL, std::string("Could not load shader: " + name).c_str(), "Shader Loading Error",	MB_TASKMODAL | MB_SETFOREGROUND | MB_ICONERROR);
 		file.close();
-		return false;
+		return;
 	}
 
 	file.close();
 
 	const GLchar* shadersource = shaderraw.c_str();
 	glShaderSource(shader_, 1, &shadersource, NULL);
-	return true;
 }
 
-bool Shader::CompileShader()
+void Shader::CompileShader() const
 {
 	glCompileShader(shader_);
 
 	GLint success = 0;
 	glGetShaderiv(shader_, GL_COMPILE_STATUS, &success);
+
 	if (success == GL_FALSE)
 	{
 		GLint loglength;
@@ -70,14 +71,10 @@ bool Shader::CompileShader()
 			MessageBox(NULL, logdata, "Shader Compilation Error", MB_TASKMODAL | MB_SETFOREGROUND | MB_ICONERROR);
 			delete[] logdata;
 		}
-
-		return false;
 	}
-
-	return true;
 }
 
-GLuint Shader::GetShader() const
+GLuint Shader::getShader() const
 {
 	return shader_;
 }

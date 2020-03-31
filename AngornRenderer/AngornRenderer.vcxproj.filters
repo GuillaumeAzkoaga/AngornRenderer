@@ -28,6 +28,9 @@
     <Filter Include="Source Files\Core\Application">
       <UniqueIdentifier>{fd2dea8b-f495-44c8-8810-6dff989a3959}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Core\Camera">
+      <UniqueIdentifier>{1427d585-f6bf-45ac-a2ba-7724f511661a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="RenderView.cpp">
@@ -45,8 +48,14 @@
     <ClCompile Include="Application.cpp">
       <Filter>Source Files\Core\Application</Filter>
     </ClCompile>
+    <ClCompile Include="ShaderProgram.cpp">
+      <Filter>Source Files\Core\Graphics</Filter>
+    </ClCompile>
     <ClCompile Include="Shader.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Core\Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Source Files\Core\Camera</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -67,6 +76,12 @@
     </ClInclude>
     <ClInclude Include="Shader.h">
       <Filter>Source Files\Core\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="ShaderProgram.h">
+      <Filter>Source Files\Core\Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Source Files\Core\Camera</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

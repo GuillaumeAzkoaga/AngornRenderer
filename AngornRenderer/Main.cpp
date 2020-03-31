@@ -1,6 +1,7 @@
 #include "Application.h"
 
 //TODO: Store loaded shaders in Graphics Manager
+//TODO: Have a default shader in case one couldn't be loaded or compiled
 int WINAPI WinMain(HINSTANCE instance, HINSTANCE hPreviousInstance, LPSTR, int show)
 {
 	SetPriorityClass(GetCurrentProcess(), ABOVE_NORMAL_PRIORITY_CLASS);

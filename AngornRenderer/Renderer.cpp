@@ -109,3 +109,16 @@ void Renderer::Shutdown()
 		renderContext_ = NULL;
 	}
 }
+
+Shader * Renderer::getShader(const GLenum shaderType, const std::string shaderName)
+{
+	Shader* shader = nullptr;	
+
+	auto it = shaders_.find(shaderName);
+	if (it == shaders_.end())	
+		shader = new Shader(shaderType, shaderName); //The shader was not yet loaded so it needs to be created & compiled
+	else
+		shader = it->second; //Already loaded
+
+	return shader;
+}
