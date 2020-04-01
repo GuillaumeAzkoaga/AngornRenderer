@@ -1,7 +1,8 @@
-#ifndef CAMERA_H
-#define CAMERA_H
+#ifndef CAMERA_H_
+#define CAMERA_H_
 
 #include <glm/glm.hpp>
+#include "ISystem.h"
 
 const float SPRINGNESS_ROTATION = 175.0f;
 const float SPRINGNESS_MOVEMENT = 225.0f;
@@ -12,25 +13,35 @@ const float MIN_MOUSE_SENSITIVITY = 0.05f;
 const float CAMERA_BOUND_PI_DIVISOR = 2.2f;
 const float MULTIPURPOSE_NUMBER = 15.0f;
 
-class Camera
+class Camera : public ISystem
 {
-	friend class Renderable;
-
 public:
-	Camera(glm::vec3 pos, float nearPlane = 1.0f, float farPlane_ = 15000.0f, float FOV_ = DEFAULT_FOV, glm::vec3 target = glm::vec3(0, 0, 0), glm::vec3 up = glm::vec3(0, 1, 0));
-	virtual void Update(float dt);
+	static Camera* getInstance()
+	{
+		if (!instance_)
+			instance_ = new Camera();
+		return instance_;
+	}
 
+	void CreateCamera(glm::vec3 pos, float nearPlane = 1.0f, float farPlane_ = 15000.0f, float FOV_ = DEFAULT_FOV, glm::vec3 target = glm::vec3(0, 0, 0), glm::vec3 up = glm::vec3(0, 1, 0));
+	
+	void Initialize() {}
+	void Update(float dt = 0);
+	void Shutdown() {}
 
 	void MoveCamera(float dt);
 	void RotateCamera(float dt);
 	void ComputeCameraMatrices(void);
 
 	float getMouseSensitivity(void) const;
-	glm::mat4 getProjectionMtx(void) const;
+	glm::mat4 getProjectionMtx(void) const;	
+
+private:
+	Camera() {}
+	static Camera* instance_;
 
 	bool useMouse_;	// To use mouse input or not
 
-private:
 	// Helper functions
 	void RotateAnglesAroundVectorUsingQuat(float Angle, float x, float y, float z);
 	void SmoothExponentialDecay2D(float dt, float springness, glm::vec2 real, glm::vec2& use);
@@ -65,7 +76,7 @@ private:
 	// Sensitivity 
 	float sensitivityModifier_;		// Goes from 0 to 1 (0.5 = default sensitivity)
 
-
 };
+
 
 #endif

@@ -2,6 +2,7 @@
 #include "RenderView.h"
 #include "InputManager.h"
 #include "Renderer.h"
+#include "Camera.h"
 
 Application* Application::instance_ = 0;
 
@@ -10,6 +11,7 @@ Application* Application::instance_ = 0;
 void Application::RunApplication(HINSTANCE hinstance, int show, int WindowWidth, int WindowHeight, const char * WindowTitle)
 {
 	RenderView::getInstance()->CreateMyWindow(hinstance, show, WindowWidth, WindowHeight, WindowTitle);	
+	Camera::getInstance()->CreateCamera(glm::vec3(-1000.0f, 0.0f, 0.0f));
 
 	Initialize();
 	Update();
@@ -21,6 +23,7 @@ void Application::Initialize()
 	isRunning_ = true;
 	RenderView::getInstance()->Initialize();	
 	InputManager::getInstance()->Initialize();	
+	Camera::getInstance()->Initialize();
 	Renderer::getInstance()->Initialize();
 }
 
@@ -30,7 +33,7 @@ void Application::Update(float dt)
 	{
 		InputManager::getInstance()->Update(dt);
 		RenderView::getInstance()->Update(dt);
-		//TODO: Update camera before render
+		Camera::getInstance()->Update(dt);
 		Renderer::getInstance()->Update();
 
 		if (InputManager::getInstance()->KeyIsTriggered(VK_ESCAPE))
@@ -39,10 +42,12 @@ void Application::Update(float dt)
 }
 
 void Application::Shutdown()
-{	
-	RenderView::getInstance()->Shutdown();
-	InputManager::getInstance()->Shutdown();
+{		
 	Renderer::getInstance()->Shutdown();
+	Camera::getInstance()->Shutdown();
+	InputManager::getInstance()->Shutdown();
+	RenderView::getInstance()->Shutdown();
+
 	isRunning_ = false;
 }
 

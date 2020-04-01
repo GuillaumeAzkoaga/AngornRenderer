@@ -1,39 +1,25 @@
 #include "Camera.h"
 #include "InputManager.h"
 #include "RenderView.h"
+#include "MathUtils.h"
 
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtc/quaternion.hpp>
 
-#define PI 3.1415926535897932384626433832795f
-#define EPSILON 0.0001f
-#define isZero(x) ((x < EPSILON) && (x > -EPSILON)) 
 
-glm::vec3 Normalize(const glm::vec3 & v)
+Camera* Camera::instance_ = 0;
+
+
+void Camera::CreateCamera(glm::vec3 pos, float nearPlane, float farPlane, float FOV, glm::vec3 target, glm::vec3 up)
 {
-	float length = glm::length(v);
-	if (isZero(length))
-	{
-		return glm::vec3(0.0f);
-	}
+	position_ = pos;
+	nearPlane_ = nearPlane;
+	farPlane_ = farPlane;
+	FOV_ = FOV;
+	target_ = target;
+	up_ = up;
+	useMouse_ = true;
 
-	return v / length;
-}
-
-glm::vec4 Normalize(const glm::vec4 & v)
-{
-	float length = glm::length(v);
-	if (isZero(length))
-	{
-		return glm::vec4(0.0f);
-	}
-
-	return v / length;
-}
-
-
-Camera::Camera(glm::vec3 pos, float nearPlane, float farPlane, float FOV, glm::vec3 target, glm::vec3 up) : position_(pos), nearPlane_(nearPlane), farPlane_(farPlane), FOV_(FOV), target_(target), up_(up), useMouse_(true)
-{
 	// Vectors
 	view_ = target_ - position_;
 	rotation_ = glm::vec3(0, 0, 0);

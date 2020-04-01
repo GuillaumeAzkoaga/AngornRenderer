@@ -83,5 +83,8 @@
     <ClInclude Include="Camera.h">
       <Filter>Source Files\Core\Camera</Filter>
     </ClInclude>
+    <ClInclude Include="MathUtils.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
