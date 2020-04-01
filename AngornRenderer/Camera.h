@@ -23,7 +23,7 @@ public:
 		return instance_;
 	}
 
-	void CreateCamera(glm::vec3 pos, float nearPlane = 1.0f, float farPlane_ = 15000.0f, float FOV_ = DEFAULT_FOV, glm::vec3 target = glm::vec3(0, 0, 0), glm::vec3 up = glm::vec3(0, 1, 0));
+	void CreateCamera(glm::vec3 pos, float nearPlane = 1.0f, float farPlane_ = 15000.0f, float FOV_ = DEFAULT_FOV);
 	
 	void Initialize() {}
 	void Update(float dt = 0);
@@ -40,7 +40,7 @@ private:
 	Camera() {}
 	static Camera* instance_;
 
-	bool useMouse_;	// To use mouse input or not
+	bool isMouseLocked_;	// To use mouse input or not
 
 	// Helper functions
 	void RotateAnglesAroundVectorUsingQuat(float Angle, float x, float y, float z);

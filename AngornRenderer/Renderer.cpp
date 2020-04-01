@@ -1,10 +1,7 @@
 #include "Renderer.h"
 #include "RenderView.h"
 
-#include <glew.h>
-#include <wglew.h>
-#include <gl/GL.h>
-#include <gl/GLU.h>
+
 
 #include <cstdio>
 Renderer* Renderer::instance_ = 0;

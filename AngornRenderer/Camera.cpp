@@ -10,15 +10,15 @@
 Camera* Camera::instance_ = 0;
 
 
-void Camera::CreateCamera(glm::vec3 pos, float nearPlane, float farPlane, float FOV, glm::vec3 target, glm::vec3 up)
+void Camera::CreateCamera(glm::vec3 pos, float nearPlane, float farPlane, float FOV)
 {
 	position_ = pos;
 	nearPlane_ = nearPlane;
 	farPlane_ = farPlane;
 	FOV_ = FOV;
-	target_ = target;
-	up_ = up;
-	useMouse_ = true;
+	target_ = glm::vec3(0,0,0);
+	up_ = glm::vec3(0,1,0);
+	isMouseLocked_ = true;
 
 	// Vectors
 	view_ = target_ - position_;
@@ -50,15 +50,15 @@ void Camera::Update(float dt)
 
 	//TODO: Do this only when the key is triggered, not at each frame...
 	if (InputManager::getInstance()->KeyIsTriggered(VK_SPACE))
-		useMouse_ = !useMouse_;
+		isMouseLocked_ = !isMouseLocked_;
 
-	if (useMouse_)
+	if (isMouseLocked_)
 	{
 		RenderView::getInstance()->setCursorPosition(0, 0);
 		RenderView::getInstance()->setCursorVisibility(true);
 	}
 	else
-		RenderView::getInstance()->setCursorVisibility(false);
+		RenderView::getInstance()->setCursorVisibility(true);
 }
 
 void Camera::MoveCamera(float dt)
@@ -66,7 +66,7 @@ void Camera::MoveCamera(float dt)
 	glm::vec3 currOffset(0, 0, 0);
 	glm::vec3 altView(view_.x, 0.0f, view_.z);
 
-	if (useMouse_)
+	if (isMouseLocked_)
 	{
 		// Moves according to input
 		if (InputManager::getInstance()->KeyIsPressed('D'))
@@ -105,7 +105,7 @@ void Camera::RotateCamera(float dt)
 	glm::vec2 MouseDirection(0, 0);
 
 	// This function gets the POSITION of the mouse
-	if (useMouse_)	
+	if (isMouseLocked_)	
 		mouseCoords = InputManager::getInstance()->getMousePosition();
 	
 

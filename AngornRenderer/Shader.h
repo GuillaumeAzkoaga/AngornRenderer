@@ -3,7 +3,7 @@
 
 #include <string>
 
-#include <glew.h>
+#include "RenderingUtils.h"
 
 class Shader
 {

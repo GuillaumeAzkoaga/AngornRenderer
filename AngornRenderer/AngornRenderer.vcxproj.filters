@@ -16,75 +16,96 @@
     <Filter Include="Source Files\Core">
       <UniqueIdentifier>{bd3f59a1-3942-4571-9490-93371168344a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Core\Window">
-      <UniqueIdentifier>{1d5ba7bf-0775-4551-935f-676c438a815c}</UniqueIdentifier>
+    <Filter Include="Source Files\Utils">
+      <UniqueIdentifier>{cfe48753-2ecc-4b2e-8e43-e9fbb7f17b38}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Core\Input">
-      <UniqueIdentifier>{05f8e9b5-3f53-4f76-83e5-95ca4f6f47a8}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Core\Graphics">
-      <UniqueIdentifier>{99153282-6752-49b5-9691-ef10c9c9bc73}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Core\Application">
+    <Filter Include="Source Files\Application">
       <UniqueIdentifier>{fd2dea8b-f495-44c8-8810-6dff989a3959}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Core\Camera">
+    <Filter Include="Source Files\Camera">
       <UniqueIdentifier>{1427d585-f6bf-45ac-a2ba-7724f511661a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics">
+      <UniqueIdentifier>{99153282-6752-49b5-9691-ef10c9c9bc73}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Input">
+      <UniqueIdentifier>{05f8e9b5-3f53-4f76-83e5-95ca4f6f47a8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Window">
+      <UniqueIdentifier>{1d5ba7bf-0775-4551-935f-676c438a815c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics\DeferredRendering">
+      <UniqueIdentifier>{3f4ed845-c3bf-46f2-bdfd-e8150fd1ddf8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Graphics\DeferredRendering\RenderPasses">
+      <UniqueIdentifier>{4c9db731-9378-40f7-8be0-f8073b18b74d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="RenderView.cpp">
-      <Filter>Source Files\Core\Window</Filter>
+      <Filter>Source Files\Window</Filter>
     </ClCompile>
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="InputManager.cpp">
-      <Filter>Source Files\Core\Input</Filter>
+      <Filter>Source Files\Input</Filter>
     </ClCompile>
     <ClCompile Include="Renderer.cpp">
-      <Filter>Source Files\Core\Graphics</Filter>
+      <Filter>Source Files\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="Application.cpp">
-      <Filter>Source Files\Core\Application</Filter>
+      <Filter>Source Files\Application</Filter>
     </ClCompile>
     <ClCompile Include="ShaderProgram.cpp">
-      <Filter>Source Files\Core\Graphics</Filter>
+      <Filter>Source Files\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="Shader.cpp">
-      <Filter>Source Files\Core\Graphics</Filter>
+      <Filter>Source Files\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="Camera.cpp">
-      <Filter>Source Files\Core\Camera</Filter>
+      <Filter>Source Files\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="GBuffer.cpp">
+      <Filter>Source Files\Graphics\DeferredRendering</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="RenderView.h">
-      <Filter>Source Files\Core\Window</Filter>
+      <Filter>Source Files\Window</Filter>
     </ClInclude>
     <ClInclude Include="InputManager.h">
-      <Filter>Source Files\Core\Input</Filter>
+      <Filter>Source Files\Input</Filter>
     </ClInclude>
     <ClInclude Include="Renderer.h">
-      <Filter>Source Files\Core\Graphics</Filter>
+      <Filter>Source Files\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="ISystem.h">
       <Filter>Source Files\Core</Filter>
     </ClInclude>
     <ClInclude Include="Application.h">
-      <Filter>Source Files\Core\Application</Filter>
+      <Filter>Source Files\Application</Filter>
     </ClInclude>
     <ClInclude Include="Shader.h">
-      <Filter>Source Files\Core\Graphics</Filter>
+      <Filter>Source Files\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="ShaderProgram.h">
-      <Filter>Source Files\Core\Graphics</Filter>
+      <Filter>Source Files\Graphics</Filter>
     </ClInclude>
     <ClInclude Include="Camera.h">
-      <Filter>Source Files\Core\Camera</Filter>
+      <Filter>Source Files\Camera</Filter>
     </ClInclude>
     <ClInclude Include="MathUtils.h">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderPass.h">
+      <Filter>Source Files\Graphics\DeferredRendering</Filter>
+    </ClInclude>
+    <ClInclude Include="GBuffer.h">
+      <Filter>Source Files\Graphics\DeferredRendering</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderingUtils.h">
+      <Filter>Source Files\Utils</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
