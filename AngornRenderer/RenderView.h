@@ -37,14 +37,14 @@ public:
 	void setCursorVisibility(bool show);
 
 private:	
-	RenderView() {}
+	RenderView() {};
 	static RenderView* instance_;
 
-	HWND handle_;
-	WNDCLASSEX class_;
-	HINSTANCE hInstance_;
-	int width_;
-	int height_;
+	HWND handle_ = 0;
+	WNDCLASSEX class_ = {};
+	HINSTANCE hInstance_ = 0;
+	int width_ = 0;
+	int height_= 0;
 };
 
 #endif // ! WINDOW_MANAGER_H_

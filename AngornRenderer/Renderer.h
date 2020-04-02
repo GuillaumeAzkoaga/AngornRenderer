@@ -34,8 +34,8 @@ private:
 	Renderer() {}
 	static Renderer* instance_;
 
-	HDC deviceContext_;
-	HGLRC renderContext_;
+	HDC deviceContext_ = 0;
+	HGLRC renderContext_ = 0;
 
 	int glMajorVersion_ = 4;
 	int glMinorVersion_ = 2;

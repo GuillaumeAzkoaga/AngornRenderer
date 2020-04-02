@@ -40,6 +40,12 @@
     <Filter Include="Source Files\Graphics\DeferredRendering\RenderPasses">
       <UniqueIdentifier>{4c9db731-9378-40f7-8be0-f8073b18b74d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\ObjectData">
+      <UniqueIdentifier>{e55ab247-ceb4-4e65-a8b0-e66fd0b02e98}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ResourceLoader">
+      <UniqueIdentifier>{4a72cc0e-6385-484f-9023-5680e7ab68fe}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="RenderView.cpp">
@@ -68,6 +74,18 @@
     </ClCompile>
     <ClCompile Include="GBuffer.cpp">
       <Filter>Source Files\Graphics\DeferredRendering</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh.cpp">
+      <Filter>Source Files\ObjectData</Filter>
+    </ClCompile>
+    <ClCompile Include="tiny_obj_loader.cpp">
+      <Filter>Source Files\Utils</Filter>
+    </ClCompile>
+    <ClCompile Include="Material.cpp">
+      <Filter>Source Files\ObjectData</Filter>
+    </ClCompile>
+    <ClCompile Include="ResourceLoader.cpp">
+      <Filter>Source Files\ResourceLoader</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -106,6 +124,18 @@
     </ClInclude>
     <ClInclude Include="RenderingUtils.h">
       <Filter>Source Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>Source Files\ObjectData</Filter>
+    </ClInclude>
+    <ClInclude Include="tiny_obj_loader.h">
+      <Filter>Source Files\Utils</Filter>
+    </ClInclude>
+    <ClInclude Include="Material.h">
+      <Filter>Source Files\ObjectData</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceLoader.h">
+      <Filter>Source Files\ResourceLoader</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

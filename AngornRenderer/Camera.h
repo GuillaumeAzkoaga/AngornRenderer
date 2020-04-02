@@ -6,12 +6,9 @@
 
 const float SPRINGNESS_ROTATION = 175.0f;
 const float SPRINGNESS_MOVEMENT = 225.0f;
-const float DEFAULT_FOV = 45.0f;
-const float DEFAULT_SENSITIVITY = 0.5f;
 const float MAX_MOUSE_SENSITIVITY = 0.25f;
 const float MIN_MOUSE_SENSITIVITY = 0.05f;
 const float CAMERA_BOUND_PI_DIVISOR = 2.2f;
-const float MULTIPURPOSE_NUMBER = 15.0f;
 
 class Camera : public ISystem
 {
@@ -23,7 +20,7 @@ public:
 		return instance_;
 	}
 
-	void CreateCamera(glm::vec3 pos, float nearPlane = 1.0f, float farPlane_ = 15000.0f, float FOV_ = DEFAULT_FOV);
+	void CreateCamera(glm::vec3 pos, float nearPlane = 1.0f, float farPlane_ = 15000.0f, float FOV_ = 45.f);
 	
 	void Initialize() {}
 	void Update(float dt = 0);
@@ -40,7 +37,7 @@ private:
 	Camera() {}
 	static Camera* instance_;
 
-	bool isMouseLocked_;	// To use mouse input or not
+	bool isMouseLocked_ = true;	// To use mouse input or not
 
 	// Helper functions
 	void RotateAnglesAroundVectorUsingQuat(float Angle, float x, float y, float z);
@@ -60,21 +57,21 @@ private:
 	glm::mat4 projMat_;
 
 	// Perspective
-	float nearPlane_;
-	float farPlane_;
-	float FOV_;
-	float ar_;
-	float nearPlaneHalfWidth_;
-	float nearPlaneHalfHeight_;
-	float farPlaneHalfWidth_;
-	float farPlaneHalfHeight_;
+	float nearPlane_ = 0;
+	float farPlane_ = 0;
+	float FOV_ = 45.f;
+	float ar_ = 0;
+	float nearPlaneHalfWidth_ = 0;
+	float nearPlaneHalfHeight_ = 0;
+	float farPlaneHalfWidth_ = 0;
+	float farPlaneHalfHeight_ = 0;
 
 	// Interpolation
 	glm::vec2 mouseDisplacement_;
 	glm::vec3 cameraDisplacement_;
 
 	// Sensitivity 
-	float sensitivityModifier_;		// Goes from 0 to 1 (0.5 = default sensitivity)
+	float sensitivityModifier_ = 0.5f;		// Goes from 0 to 1 (0.5 = default sensitivity)
 
 };
 

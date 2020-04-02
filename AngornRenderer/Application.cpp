@@ -3,6 +3,7 @@
 #include "InputManager.h"
 #include "Renderer.h"
 #include "Camera.h"
+#include "ResourceLoader.h"
 
 Application* Application::instance_ = 0;
 
@@ -25,6 +26,7 @@ void Application::Initialize()
 	InputManager::getInstance()->Initialize();	
 	Camera::getInstance()->Initialize();
 	Renderer::getInstance()->Initialize();
+	ResourceLoader::getInstance()->Initialize();
 }
 
 void Application::Update(float dt)
@@ -35,6 +37,7 @@ void Application::Update(float dt)
 		RenderView::getInstance()->Update(dt);
 		Camera::getInstance()->Update(dt);
 		Renderer::getInstance()->Update();
+		ResourceLoader::getInstance()->Update(dt);
 
 		if (InputManager::getInstance()->KeyIsTriggered(VK_ESCAPE))
 			isRunning_ = false;		
@@ -43,6 +46,7 @@ void Application::Update(float dt)
 
 void Application::Shutdown()
 {		
+	ResourceLoader::getInstance()->Shutdown();
 	Renderer::getInstance()->Shutdown();
 	Camera::getInstance()->Shutdown();
 	InputManager::getInstance()->Shutdown();

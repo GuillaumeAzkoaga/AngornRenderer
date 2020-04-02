@@ -25,7 +25,7 @@ void Camera::CreateCamera(glm::vec3 pos, float nearPlane, float farPlane, float 
 	rotation_ = glm::vec3(0, 0, 0);
 
 	// Camera options
-	sensitivityModifier_ = DEFAULT_SENSITIVITY;
+	sensitivityModifier_ = 0.5f;
 
 	// Interpolation
 	mouseDisplacement_ = glm::vec2(0.0f, 0.0f);
@@ -70,19 +70,19 @@ void Camera::MoveCamera(float dt)
 	{
 		// Moves according to input
 		if (InputManager::getInstance()->KeyIsPressed('D'))
-			currOffset += MULTIPURPOSE_NUMBER * right_;
+			currOffset += 15.0f * right_;
 		if (InputManager::getInstance()->KeyIsPressed('A'))
-			currOffset -= MULTIPURPOSE_NUMBER * right_;
+			currOffset -= 15.0f * right_;
 		if (InputManager::getInstance()->KeyIsPressed('E'))
-			currOffset += MULTIPURPOSE_NUMBER * glm::vec3(0, 1, 0);
+			currOffset += 15.0f * glm::vec3(0, 1, 0);
 		if (InputManager::getInstance()->KeyIsPressed('Q'))
-			currOffset -= MULTIPURPOSE_NUMBER * glm::vec3(0, 1, 0);
+			currOffset -= 15.0f * glm::vec3(0, 1, 0);
 		if (InputManager::getInstance()->KeyIsPressed('W'))
-			currOffset += MULTIPURPOSE_NUMBER * altView;
+			currOffset += 15.0f * altView;
 		if (InputManager::getInstance()->KeyIsPressed('S'))
-			currOffset -= MULTIPURPOSE_NUMBER * altView;
+			currOffset -= 15.0f * altView;
 		if (InputManager::getInstance()->KeyIsPressed(VK_SHIFT))
-			currOffset *= MULTIPURPOSE_NUMBER;
+			currOffset *= 15.0f;
 	}
 
 	// Interpolation

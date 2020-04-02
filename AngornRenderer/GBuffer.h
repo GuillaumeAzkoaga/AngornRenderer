@@ -19,9 +19,9 @@ public:
 
 private:
 
-	bool isUsingDepth_;
-	GLuint frameBufferOject_;
+	bool isUsingDepth_ = false;
+	GLuint frameBufferOject_ = 0;
 	std::vector<GLuint> textureList_;
-	GLuint depthTexture_;
+	GLuint depthTexture_ = 0;
 };
 #endif

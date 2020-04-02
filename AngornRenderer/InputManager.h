@@ -50,14 +50,14 @@ private:
 
 	static InputManager* instance_;
 
-	char	currentKey_[256];
-	char	previousKey_[256];
+	char	currentKey_[256]{};
+	char	previousKey_[256]{};
 
-	char	currentMouseButton_[2];
-	char	previousMouseButton_[2];
+	char	currentMouseButton_[2]{};
+	char	previousMouseButton_[2]{};
 
 	glm::vec2	mousePos_;
-	bool	isMouseWithinWindow_;
+	bool	isMouseWithinWindow_ = true;
 
 
 };
