@@ -1,6 +1,8 @@
 #include "GBuffer.h"
 #include "RenderView.h"
 
+#include <string>
+
 void GBuffer::Initialize(const unsigned int windowWidth, const unsigned int windowHeight, const unsigned textureAmount, const bool useDepth)
 {
 	isUsingDepth_ = useDepth;
