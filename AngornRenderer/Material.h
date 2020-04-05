@@ -1,7 +1,7 @@
 #ifndef MATERIAL_H
 #define MATERIAL_H
 
-#include <glm/glm.hpp>
+#include "MathUtils.h"
 
 enum class MATERIAL_TYPE
 {

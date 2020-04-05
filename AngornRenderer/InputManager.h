@@ -3,8 +3,8 @@
 
 #include <Windows.h>
 #include <string>
-#include <glm/glm.hpp>
 
+#include "MathUtils.h"
 #include "ISystem.h"
 
 #define MOUSE_LEFT 0

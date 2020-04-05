@@ -3,9 +3,6 @@
 #include "RenderView.h"
 #include "MathUtils.h"
 
-#include <glm/gtc/matrix_transform.hpp>
-#include <glm/gtc/quaternion.hpp>
-
 
 Camera* Camera::instance_ = 0;
 
@@ -149,7 +146,7 @@ void Camera::RotateCamera(float dt)
 	glm::vec3 Axis = glm::cross(view_, up_);
 	// To be able to use the quaternion conjugate, the axis to
 	// rotate around must be normalized.
-	Axis = Normalize(Axis);
+	Axis = glm::normalize(Axis);
 	// Store values
 	mouseDisplacement_.x = MouseDirection.x;
 	mouseDisplacement_.y = MouseDirection.y;
@@ -163,14 +160,14 @@ void Camera::RotateCamera(float dt)
 
 void Camera::ComputeCameraMatrices()
 {
-	// Sanity
-	right_ = Normalize(right_);
-	up_ = Normalize(up_);
-	view_ = Normalize(view_);
+	// TODO: do we need to perform this sanity normalize? If we do, we can't do it on zero vectors!!!
+	/*right_ = glm::normalize(right_);
+	up_ = glm::normalize(up_);
+	view_ = glm::normalize(view_);*/
 
 	// Computations
-	right_ = Normalize(glm::cross(view_, glm::vec3(0.0f, 1.0f, 0.0f)));
-	up_ = Normalize(glm::cross(right_, view_));
+	right_ = glm::normalize(glm::cross(view_, glm::vec3(0.0f, 1.0f, 0.0f)));
+	up_ = glm::normalize(glm::cross(right_, view_));
 	viewMat_ = glm::lookAt(position_, target_, up_);
 	projMat_ = glm::perspective(FOV_, ar_, nearPlane_, farPlane_);
 }

@@ -87,6 +87,9 @@
     <ClCompile Include="ResourceLoader.cpp">
       <Filter>Source Files\ResourceLoader</Filter>
     </ClCompile>
+    <ClCompile Include="IRenderable.cpp">
+      <Filter>Source Files\Core</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="RenderView.h">
@@ -136,6 +139,9 @@
     </ClInclude>
     <ClInclude Include="ResourceLoader.h">
       <Filter>Source Files\ResourceLoader</Filter>
+    </ClInclude>
+    <ClInclude Include="IRenderable.h">
+      <Filter>Source Files\Core</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

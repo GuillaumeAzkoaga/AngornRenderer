@@ -1,7 +1,7 @@
 #include "ShaderProgram.h"
 
 #include <Windows.h>
-#include <glm/gtc/type_ptr.hpp>
+#include "MathUtils.h"
 
 ShaderProgram::ShaderProgram()
 {

@@ -1,7 +1,7 @@
 #ifndef CAMERA_H_
 #define CAMERA_H_
 
-#include <glm/glm.hpp>
+#include "MathUtils.h"
 #include "ISystem.h"
 
 const float SPRINGNESS_ROTATION = 175.0f;

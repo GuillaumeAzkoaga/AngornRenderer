@@ -3,8 +3,8 @@
 
 #include <map>
 #include <string>
-#include <glm/glm.hpp>
 
+#include "MathUtils.h"
 #include "Shader.h"
 
 class ShaderProgram

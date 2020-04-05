@@ -23,6 +23,7 @@
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="GBuffer.cpp" />
     <ClCompile Include="InputManager.cpp" />
+    <ClCompile Include="IRenderable.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Material.cpp" />
     <ClCompile Include="Mesh.cpp" />
@@ -38,6 +39,7 @@
     <ClInclude Include="Camera.h" />
     <ClInclude Include="GBuffer.h" />
     <ClInclude Include="InputManager.h" />
+    <ClInclude Include="IRenderable.h" />
     <ClInclude Include="ISystem.h" />
     <ClInclude Include="Material.h" />
     <ClInclude Include="MathUtils.h" />
