@@ -2,6 +2,7 @@
 #define APPLICATION_H
 
 #include "ISystem.h"
+#include "Ball.h"
 
 #include <Windows.h>
 
@@ -16,17 +17,20 @@ public:
 	}
 
 	void RunApplication(HINSTANCE hinstance, int show, int WindowWidth, int WindowHeight, const char * WindowTitle);
+	void ExitApplication();
+
+private:
+	Application(){}	
 
 	void Initialize();
 	void Update(float dt = 0);
 	void Shutdown();
 
+	void CreateScene();
 
-private:
-	Application(){}
-	
+	Ball* DEBUG_OBJECT = nullptr;
+
 	static Application* instance_;
-
 	bool isRunning_ = false;
 };
 

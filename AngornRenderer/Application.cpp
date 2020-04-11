@@ -19,6 +19,12 @@ void Application::RunApplication(HINSTANCE hinstance, int show, int WindowWidth,
 	Shutdown();
 }
 
+void Application::ExitApplication()
+{
+	Shutdown();
+}
+
+
 void Application::Initialize()
 {
 	isRunning_ = true;
@@ -27,6 +33,8 @@ void Application::Initialize()
 	Camera::getInstance()->Initialize();
 	Renderer::getInstance()->Initialize();
 	ResourceLoader::getInstance()->Initialize();
+
+	CreateScene();
 }
 
 void Application::Update(float dt)
@@ -53,5 +61,13 @@ void Application::Shutdown()
 	RenderView::getInstance()->Shutdown();
 
 	isRunning_ = false;
+}
+
+
+void Application::CreateScene()
+{
+	Camera::getInstance()->CreateCamera(glm::vec3(-1000.0f, 0.0f, 0.0f));
+
+	DEBUG_OBJECT = new Ball(glm::vec3(0, 50, 0), glm::vec3(500), glm::angleAxis(0.0f, glm::vec3(1, 0, 0)), new Material(MATERIAL_TYPE::MAT_NORMAL));
 }
 

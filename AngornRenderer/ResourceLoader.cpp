@@ -10,7 +10,7 @@ Mesh* ResourceLoader::getMesh(const std::string fileName)
 			return mesh;
 	}
 	
-	Mesh* mesh{};
+	Mesh* mesh = new Mesh();
 	mesh->LoadMesh(fileName);
 	meshes_.push_back(mesh);
 	return mesh;

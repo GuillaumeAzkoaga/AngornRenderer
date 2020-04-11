@@ -4,6 +4,8 @@
 
 
 #include <cstdio>
+#include "Camera.h"
+
 Renderer* Renderer::instance_ = 0;
 
 void Renderer::Initialize()
@@ -84,6 +86,7 @@ void Renderer::Initialize()
 void Renderer::Update(float dt)
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	Camera::getInstance()->Update(dt);
 
 	//TODO: Apply render passes
 
@@ -112,10 +115,35 @@ Shader * Renderer::getShader(const GLenum shaderType, const std::string shaderNa
 	Shader* shader = nullptr;	
 
 	auto it = shaders_.find(shaderName);
-	if (it == shaders_.end())	
+	if (it == shaders_.end())
+	{
 		shader = new Shader(shaderType, shaderName); //The shader was not yet loaded so it needs to be created & compiled
+		shaders_.insert(std::pair<std::string, Shader*>(shaderName, shader));
+	}
 	else
 		shader = it->second; //Already loaded
 
 	return shader;
+}
+
+std::vector<IRenderable*> Renderer::getRenderables() const 
+{
+	return renderables_; 
+}
+
+void Renderer::RegisterRenderable(IRenderable* object) 
+{ 
+	renderables_.push_back(object); 
+}
+
+void Renderer::RegisterBuffer(const std::string bufferName, GBuffer* gbuffer)
+{
+	if (buffers_.find(bufferName) == buffers_.cend())
+		buffers_.insert(std::pair<std::string, GBuffer*>(bufferName, gbuffer));
+}
+
+GBuffer* Renderer::getBuffer(const std::string bufferName) const
+{
+	auto it = buffers_.find(bufferName);
+	return it == buffers_.end() ? nullptr : it->second;
 }

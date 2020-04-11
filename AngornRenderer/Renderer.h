@@ -2,10 +2,13 @@
 #define RENDERER_H_
 
 #include "ISystem.h"
+#include "IRenderable.h"
 #include "Shader.h"
+#include "GBuffer.h"
 
 #include <Windows.h>
 #include <map>
+#include <vector>
 #include <string>
 
 class Renderer : public ISystem
@@ -30,6 +33,13 @@ public:
 	/// <param name="shaderName"></param>
 	/// <returns></returns>
 	Shader* getShader(const GLenum shaderType, const std::string shaderName);
+
+	std::vector<IRenderable*> getRenderables() const;
+	void RegisterRenderable(IRenderable* object);
+
+	void RegisterBuffer(const std::string bufferName, GBuffer* gbuffer);
+	GBuffer* getBuffer(const std::string bufferName) const;
+
 private:
 	Renderer() {}
 	static Renderer* instance_;
@@ -41,6 +51,7 @@ private:
 	int glMinorVersion_ = 2;
 
 	std::map<std::string, Shader*> shaders_;
-
+	std::map<std::string, GBuffer*> buffers_;
+	std::vector<IRenderable*> renderables_;
 };
 #endif

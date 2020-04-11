@@ -9,7 +9,6 @@ void Mesh::LoadMesh(const std::string file)
 	
 	std::vector<shape_t> tiny_obj_shapes;
 	std::vector<material_t> tiny_obj_mats;
-
 	std::string load_result = LoadObj(tiny_obj_shapes, tiny_obj_mats, file.c_str());
 	if (load_result.empty())
 	{

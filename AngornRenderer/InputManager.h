@@ -56,7 +56,7 @@ private:
 	char	currentMouseButton_[2]{};
 	char	previousMouseButton_[2]{};
 
-	glm::vec2	mousePos_;
+	glm::vec2	mousePos_ = glm::vec2();
 	bool	isMouseWithinWindow_ = true;
 
 

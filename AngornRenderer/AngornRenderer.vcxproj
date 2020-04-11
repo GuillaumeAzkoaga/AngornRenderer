@@ -22,6 +22,7 @@
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="GBuffer.cpp" />
+    <ClCompile Include="GeometryPass.cpp" />
     <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="IRenderable.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -36,8 +37,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h" />
+    <ClInclude Include="Ball.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="GBuffer.h" />
+    <ClInclude Include="GeometryPass.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="IRenderable.h" />
     <ClInclude Include="ISystem.h" />
@@ -46,7 +49,7 @@
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="RenderingUtils.h" />
-    <ClInclude Include="RenderPass.h" />
+    <ClInclude Include="IRenderPass.h" />
     <ClInclude Include="RenderView.h" />
     <ClInclude Include="ResourceLoader.h" />
     <ClInclude Include="Shader.h" />

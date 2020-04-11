@@ -226,7 +226,3 @@ float Camera::getMouseSensitivity(void) const
 
 
 
-glm::mat4 Camera::getProjectionMtx() const
-{
-	return projMat_;
-}

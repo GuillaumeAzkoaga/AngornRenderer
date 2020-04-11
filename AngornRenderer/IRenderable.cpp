@@ -1,11 +1,17 @@
 #include "IRenderable.h"
+#include "Renderer.h"
 
-void IRenderable::Initialize()
+IRenderable::IRenderable()
 {
-
+	Renderer::getInstance()->RegisterRenderable(this);
 }
 
-void IRenderable::Render(GLenum renderMode)
+IRenderable::IRenderable(Mesh* mesh, Material* material) : mesh_(mesh), material_(material)
+{
+	Renderer::getInstance()->RegisterRenderable(this);
+}
+
+void IRenderable::Initialize()
 {
 	glGenVertexArrays(1, &vertexArrayObject_);
 	glGenBuffers(1, &vertexBuffer_);
@@ -17,7 +23,7 @@ void IRenderable::Render(GLenum renderMode)
 	//TODO: if any of those vectors is empty, we should display an error message (better after mesh is loaded than here)
 	const std::vector<glm::vec3> vertices = mesh_->getVertices();
 	const std::vector<glm::vec3> normals = mesh_->getNormals();
-	const std::vector<unsigned short> indices = mesh_->getIndices();	
+	const std::vector<unsigned short> indices = mesh_->getIndices();
 	if (!vertices.empty())
 	{
 		// Bind a buffer of vertices
@@ -45,6 +51,31 @@ void IRenderable::Render(GLenum renderMode)
 	}
 }
 
+void IRenderable::Render(GLenum renderMode, bool renderWireframe)
+{
+	glBindVertexArray(vertexArrayObject_);
+
+	if(renderWireframe)
+	{
+		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+		glDisable(GL_CULL_FACE);
+		glDrawElements(GL_TRIANGLES, static_cast<GLsizei>(mesh_->getIndices().size()), GL_UNSIGNED_SHORT, (void*)0);
+		glEnable(GL_CULL_FACE);
+		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	}
+	else
+	{
+		if (renderMode == GL_PATCHES)
+			glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+
+		glDrawElements(renderMode, static_cast<GLsizei>(mesh_->getIndices().size()),	GL_UNSIGNED_SHORT, nullptr);
+
+		if (renderMode == GL_PATCHES)
+			glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+	}
+
+}
+
 void IRenderable::Shutdown()
 {
 	glDeleteBuffers(1, &vertexBuffer_);
@@ -52,3 +83,4 @@ void IRenderable::Shutdown()
 	glDeleteBuffers(1, &indexBuffer_);
 	glDeleteVertexArrays(1, &vertexArrayObject_);
 }
+

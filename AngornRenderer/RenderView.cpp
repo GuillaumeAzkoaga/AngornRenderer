@@ -109,7 +109,7 @@ LRESULT RenderView::MessageHandler(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lP
 	{
 	case WM_DESTROY:
 		PostQuitMessage(0);
-		Application::getInstance()->Shutdown();
+		Application::getInstance()->ExitApplication();
 		break;
 	case WM_CREATE:
 		break;

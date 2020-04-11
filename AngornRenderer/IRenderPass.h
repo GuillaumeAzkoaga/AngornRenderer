@@ -2,11 +2,11 @@
 #define RENDER_PASS_H_
 
 #include "ShaderProgram.h"
-#include "ISystem.h"
 
-class RenderPass : public ISystem
+class IRenderPass 
 {
 public:
+	virtual void Apply() = 0;
 
 protected:
 	ShaderProgram* program_;

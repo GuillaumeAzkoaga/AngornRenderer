@@ -6,4 +6,27 @@
 #include <gl/GL.h>
 #include <gl/GLU.h>
 
+// Shader paths
+#define GEOMETRY_VERTEX_FILE			"../Shaders/geometry_pass.vert"
+#define GEOMETRY_FRAGMENT_FILE			"../Shaders/geometry_pass.frag"
+#define MULTILIGHTING_VERTEX_FILE		"../Shaders/multilighting_pass.vert"
+#define MULTILIGHTING_FRAGMENT_FILE		"../Shaders/multilighting_pass.frag"
+#define EDGE_DETECTION_VERTEX_FILE		"../Shaders/edge_pass.vert"
+#define EDGE_DETECTION_FRAGMENT_FILE	"../Shaders/edge_pass.frag"
+#define VIEW_VERTEX_FILE				"../Shaders/view.vert"
+#define VIEW_FRAGMENT_FILE				"../Shaders/view.frag"
+
+enum RenderMode
+{
+	FINAL,
+	POSITION,
+	NORMAL,
+	DIFFUSE,
+	SPECULAR,
+	SPECULARCOLOR,
+	EDGES,
+	DEPTH,
+
+	MAX_RENDER_MODES_AMOUNT
+};
 #endif
