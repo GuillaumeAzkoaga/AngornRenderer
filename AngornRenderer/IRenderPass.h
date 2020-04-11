@@ -9,7 +9,7 @@ public:
 	virtual void Apply() = 0;
 
 protected:
-	ShaderProgram* program_;
+	ShaderProgram* program_ = nullptr;
 
 };
 
