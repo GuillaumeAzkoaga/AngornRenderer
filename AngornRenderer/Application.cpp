@@ -28,13 +28,14 @@ void Application::ExitApplication()
 void Application::Initialize()
 {
 	isRunning_ = true;
+	CreateScene();
+
 	RenderView::getInstance()->Initialize();	
 	InputManager::getInstance()->Initialize();	
 	Camera::getInstance()->Initialize();
 	Renderer::getInstance()->Initialize();
-	ResourceLoader::getInstance()->Initialize();
 
-	CreateScene();
+	
 }
 
 void Application::Update(float dt)
@@ -45,7 +46,6 @@ void Application::Update(float dt)
 		RenderView::getInstance()->Update(dt);
 		Camera::getInstance()->Update(dt);
 		Renderer::getInstance()->Update();
-		ResourceLoader::getInstance()->Update(dt);
 
 		if (InputManager::getInstance()->KeyIsTriggered(VK_ESCAPE))
 			isRunning_ = false;		
@@ -54,7 +54,6 @@ void Application::Update(float dt)
 
 void Application::Shutdown()
 {		
-	ResourceLoader::getInstance()->Shutdown();
 	Renderer::getInstance()->Shutdown();
 	Camera::getInstance()->Shutdown();
 	InputManager::getInstance()->Shutdown();

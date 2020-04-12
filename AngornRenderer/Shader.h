@@ -17,8 +17,8 @@ private:
 	void CreateShader(const GLenum type, const std::string name);
 	void CompileShader() const;
 
-	GLuint shader_;
-	GLenum type_;
+	GLuint shader_ = 0;
+	GLenum type_ = 0;
 	std::string name_;
 };
 

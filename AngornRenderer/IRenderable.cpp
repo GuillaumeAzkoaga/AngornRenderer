@@ -55,25 +55,13 @@ void IRenderable::Render(GLenum renderMode, bool renderWireframe)
 {
 	glBindVertexArray(vertexArrayObject_);
 
-	if(renderWireframe)
-	{
-		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-		glDisable(GL_CULL_FACE);
-		glDrawElements(GL_TRIANGLES, static_cast<GLsizei>(mesh_->getIndices().size()), GL_UNSIGNED_SHORT, (void*)0);
-		glEnable(GL_CULL_FACE);
+	if (renderWireframe && renderMode == GL_PATCHES)
+		glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);	
+	
+	glDrawElements(renderMode, static_cast<GLsizei>(mesh_->getIndices().size()), GL_UNSIGNED_SHORT, nullptr);
+
+	if (renderWireframe && renderMode == GL_PATCHES)
 		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-	}
-	else
-	{
-		if (renderMode == GL_PATCHES)
-			glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-
-		glDrawElements(renderMode, static_cast<GLsizei>(mesh_->getIndices().size()),	GL_UNSIGNED_SHORT, nullptr);
-
-		if (renderMode == GL_PATCHES)
-			glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-	}
-
 }
 
 void IRenderable::Shutdown()

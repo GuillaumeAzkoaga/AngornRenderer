@@ -1,10 +1,10 @@
+#include <cstdio>
+
 #include "Renderer.h"
 #include "RenderView.h"
-
-
-
-#include <cstdio>
 #include "Camera.h"
+
+
 
 Renderer* Renderer::instance_ = 0;
 
@@ -42,7 +42,6 @@ void Renderer::Initialize()
 		ExitProcess(0);
 	}
 
-
 	// Define context attributes
 	int attribs[] =
 	{
@@ -75,12 +74,23 @@ void Renderer::Initialize()
 
 	glViewport(0, 0, RenderView::getInstance()->getWidth(), RenderView::getInstance()->getHeight());
 
+	glEnable(GL_DEBUG_OUTPUT);
+	glDebugMessageCallback(MessageCallback, 0);
+
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LESS);
 	glEnable(GL_CULL_FACE);
 
+
+	for (IRenderable* renderable : renderables_)
+	{
+		renderable->Initialize();
+	}
 	//TODO: Initialize render passes
+	GeometryPass_ = new GeometryPass();
+
 	//TODO: Create the ToRenderQuad
+	glCheckError();
 }
 
 void Renderer::Update(float dt)
@@ -89,19 +99,18 @@ void Renderer::Update(float dt)
 	Camera::getInstance()->Update(dt);
 
 	//TODO: Apply render passes
+	GeometryPass_->Apply();
 
-	glUseProgram(0);
-	glBindBuffer(GL_FRAMEBUFFER, 0);
+	//glUseProgram(0);
+	//glBindBuffer(GL_FRAMEBUFFER, 0); -> if we have this we triggerGL Error: GL_INVALID_ENUM error generated. Invalid buffer target enum.
+
 	glFlush();
 	glFinish();
-
-	SwapBuffers(deviceContext_);
+	SwapBuffers(deviceContext_);	
 }
 
 void Renderer::Shutdown()
 {
-	//TODO:Shutdown render passes
-
 	wglMakeCurrent(NULL, NULL);
 	if (renderContext_)
 	{

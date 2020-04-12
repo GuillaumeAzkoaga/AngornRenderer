@@ -8,6 +8,8 @@ ShaderProgram::ShaderProgram()
 	program_ = glCreateProgram();
 	if (program_ == 0)	
 		MessageBox(NULL, "Error creating shader program", "OpenGL program creation error",	MB_TASKMODAL | MB_SETFOREGROUND | MB_ICONERROR);
+
+	glCheckError();
 }
 
 ShaderProgram::~ShaderProgram()
@@ -19,19 +21,23 @@ ShaderProgram::~ShaderProgram()
 void ShaderProgram::AttachShader(const Shader * shader)
 {
 	glAttachShader(program_, shader->getShader());
+	glCheckError();
 }
 
 void ShaderProgram::LinkProgram()
 {
 	glLinkProgram(program_);
+	glCheckError();
 
 	GLint status;
-	glGetShaderiv(program_, GL_LINK_STATUS, &status);
+	//glGetShaderiv(program_, GL_LINK_STATUS, &status);
+	glGetProgramiv(program_, GL_LINK_STATUS, &status);
+	glCheckError();
 
 	if (status == GL_FALSE)
 	{
 		GLint loglength;
-		glGetProgramiv(program_, GL_INFO_LOG_LENGTH, &loglength);
+		glGetProgramiv(program_, GL_INFO_LOG_LENGTH, &loglength);		
 
 		if (loglength > 0)
 		{
@@ -48,6 +54,7 @@ void ShaderProgram::LinkProgram()
 void ShaderProgram::UseProgram()
 {
 	glUseProgram(program_);
+	glCheckError();
 }
 
 GLuint ShaderProgram::getUniform(const std::string name)

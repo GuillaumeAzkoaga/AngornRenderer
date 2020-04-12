@@ -29,6 +29,7 @@
     <ClCompile Include="Material.cpp" />
     <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="RenderingUtils.cpp" />
     <ClCompile Include="RenderView.cpp" />
     <ClCompile Include="ResourceLoader.cpp" />
     <ClCompile Include="Shader.cpp" />

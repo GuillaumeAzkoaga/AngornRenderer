@@ -6,6 +6,8 @@
 #include "Shader.h"
 #include "GBuffer.h"
 
+#include "GeometryPass.h"
+
 #include <Windows.h>
 #include <map>
 #include <vector>
@@ -48,10 +50,12 @@ private:
 	HGLRC renderContext_ = 0;
 
 	int glMajorVersion_ = 4;
-	int glMinorVersion_ = 2;
+	int glMinorVersion_ = 0;
 
 	std::map<std::string, Shader*> shaders_;
 	std::map<std::string, GBuffer*> buffers_;
 	std::vector<IRenderable*> renderables_;
+
+	GeometryPass* GeometryPass_ = nullptr;
 };
 #endif

@@ -61,5 +61,6 @@ void GBuffer::Initialize(const unsigned int windowWidth, const unsigned int wind
 void GBuffer::BindFrameBuffer() const
 {
 	glBindFramebuffer(GL_FRAMEBUFFER, frameBufferOject_);
+	glCheckError();
 }
 

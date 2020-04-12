@@ -99,6 +99,9 @@
     <ClCompile Include="GeometryPass.cpp">
       <Filter>Source Files\Graphics\DeferredRendering\RenderPasses</Filter>
     </ClCompile>
+    <ClCompile Include="RenderingUtils.cpp">
+      <Filter>Source Files\Utils</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="RenderView.h">

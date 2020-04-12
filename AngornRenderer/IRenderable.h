@@ -7,6 +7,7 @@
 #include "Material.h"
 #include "Mesh.h"
 #include "Camera.h"
+#include "ShaderProgram.h"
 
 //TODO: Mesh and materials should be loaded from a file and not set manually (custom JSON?)
 
@@ -47,10 +48,10 @@ protected:
 	Material* material_ = nullptr;
 
 private:
-	GLuint vertexArrayObject_ = 0;
-	GLuint vertexBuffer_ = 0;
-	GLuint normalBuffer_ = 0;
-	GLuint indexBuffer_ = 0;
+	GLuint vertexArrayObject_;
+	GLuint vertexBuffer_;
+	GLuint normalBuffer_;
+	GLuint indexBuffer_;
 
 	glm::mat4 modelViewProjection_mtx_ = glm::mat4(); 
 	glm::mat4 viewModel_mtx_ = glm::mat4();

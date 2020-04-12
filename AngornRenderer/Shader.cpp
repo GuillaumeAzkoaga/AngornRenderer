@@ -49,6 +49,7 @@ void Shader::CreateShader(const GLenum type, const std::string name)
 
 	const GLchar* shadersource = shaderraw.c_str();
 	glShaderSource(shader_, 1, &shadersource, NULL);
+	glCheckError();
 }
 
 void Shader::CompileShader() const
@@ -57,6 +58,7 @@ void Shader::CompileShader() const
 
 	GLint success = 0;
 	glGetShaderiv(shader_, GL_COMPILE_STATUS, &success);
+	glCheckError();
 
 	if (success == GL_FALSE)
 	{
@@ -72,6 +74,7 @@ void Shader::CompileShader() const
 			delete[] logdata;
 		}
 	}
+	
 }
 
 GLuint Shader::getShader() const
