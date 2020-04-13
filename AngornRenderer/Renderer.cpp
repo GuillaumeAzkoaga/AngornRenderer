@@ -99,7 +99,6 @@ void Renderer::Initialize()
 void Renderer::Update(float dt)
 {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	Camera::getInstance()->Update(dt);
 
 	//TODO: Apply render passes
 	GeometryPass_->Apply();
