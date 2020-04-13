@@ -37,8 +37,8 @@ public:
 	const Material* getMaterial() const { return material_; }
 
 protected:
-	IRenderable();
-	IRenderable(Mesh* mesh, Material* material);
+	IRenderable(bool toRegister = true);
+	IRenderable(Mesh* mesh, Material* material, bool toRegister = true);
 
 	glm::vec3 position_ = glm::vec3();
 	glm::vec3 scale_ = glm::vec3();
@@ -48,10 +48,11 @@ protected:
 	Material* material_ = nullptr;
 
 private:
-	GLuint vertexArrayObject_;
-	GLuint vertexBuffer_;
-	GLuint normalBuffer_;
-	GLuint indexBuffer_;
+	GLuint vertexArrayObject_ = 0;
+	GLuint vertexBuffer_ = 0;
+	GLuint normalBuffer_ = 0;
+	GLuint textCoordBuffer_ = 0;
+	GLuint indexBuffer_ = 0;
 
 	glm::mat4 modelViewProjection_mtx_ = glm::mat4(); 
 	glm::mat4 viewModel_mtx_ = glm::mat4();

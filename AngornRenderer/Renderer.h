@@ -7,6 +7,9 @@
 #include "GBuffer.h"
 
 #include "GeometryPass.h"
+#include "LightPass.h"
+#include "RenderPass.h"
+#include "OutputRenderable.h"
 
 #include <Windows.h>
 #include <map>
@@ -42,6 +45,8 @@ public:
 	void RegisterBuffer(const std::string bufferName, GBuffer* gbuffer);
 	GBuffer* getBuffer(const std::string bufferName) const;
 
+	OutputRenderable* getOutputRenderable() { return toRenderQuad; }
+
 private:
 	Renderer() {}
 	static Renderer* instance_;
@@ -57,5 +62,9 @@ private:
 	std::vector<IRenderable*> renderables_;
 
 	GeometryPass* GeometryPass_ = nullptr;
+	LightPass* LightPass_ = nullptr;
+	RenderPass* RenderPass_ = nullptr;
+
+	OutputRenderable* toRenderQuad = nullptr;
 };
 #endif

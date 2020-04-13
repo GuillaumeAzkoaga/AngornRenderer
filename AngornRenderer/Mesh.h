@@ -16,12 +16,15 @@ public:
 
 	std::vector<glm::vec3> getVertices() const { return vertices_; }
 	std::vector<glm::vec3> getNormals() const { return normals_; }
+	std::vector<glm::vec2> getTextureCoords() const { return textureCoords_; }
 	std::vector<unsigned short> getIndices() const { return indices_; }
 
 private:
 	std::vector<glm::vec3> vertices_;
 	std::vector<glm::vec3> normals_;
+	std::vector<glm::vec2> textureCoords_;
 	std::vector<unsigned short> indices_;
+
 	std::string fileName_;
 };
 

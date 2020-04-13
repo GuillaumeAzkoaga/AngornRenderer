@@ -17,6 +17,7 @@ void Mesh::LoadMesh(const std::string file)
 			std::size_t vertices_num = shape.mesh.positions.size() / 3; //Position are stored as a succession of x,y,z floats
 			const std::vector<float> pos = shape.mesh.positions;
 			const std::vector<float> normal = shape.mesh.normals;
+			const std::vector<float>& uv = shape.mesh.texcoords;
 			const std::vector<unsigned int> indices = shape.mesh.indices;
 
 			for (const unsigned int index : indices)
@@ -29,6 +30,9 @@ void Mesh::LoadMesh(const std::string file)
 
 				if (!pos.empty())
 					vertices_.push_back(glm::vec3(pos[3 * i], pos[3 * i + 1], pos[3 * i + 2]));
+
+				if(!uv.empty())
+					textureCoords_.push_back(glm::vec2(uv[i * 2], uv[i * 2 + 1]));
 			}
 		}
 

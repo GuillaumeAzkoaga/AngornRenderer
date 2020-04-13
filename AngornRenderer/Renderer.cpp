@@ -88,8 +88,11 @@ void Renderer::Initialize()
 	}
 	//TODO: Initialize render passes
 	GeometryPass_ = new GeometryPass();
+	LightPass_ = new LightPass();
+	RenderPass_ = new RenderPass();
 
 	//TODO: Create the ToRenderQuad
+	toRenderQuad = new OutputRenderable();
 	glCheckError();
 }
 
@@ -100,9 +103,11 @@ void Renderer::Update(float dt)
 
 	//TODO: Apply render passes
 	GeometryPass_->Apply();
+	LightPass_->Apply();
+	RenderPass_->Apply();
 
-	//glUseProgram(0);
-	//glBindBuffer(GL_FRAMEBUFFER, 0); -> if we have this we triggerGL Error: GL_INVALID_ENUM error generated. Invalid buffer target enum.
+	glUseProgram(0);
+	//glBindBuffer(GL_FRAMEBUFFER, 0); //-> if we have this we triggerGL Error: GL_INVALID_ENUM error generated. Invalid buffer target enum.
 
 	glFlush();
 	glFinish();

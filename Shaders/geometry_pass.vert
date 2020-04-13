@@ -1,15 +1,20 @@
-#version 420
+#version 400
 
-layout (location = 0) in vec3 Position;
-layout (location = 1) in vec3 Normal;
+layout (location = 0) in vec3 VertexPosition;
+layout (location = 1) in vec3 VertexNormal;
+layout (location = 2) in vec2 VertexTextureCoord;
 
-out vec3 Normal0;
-out vec3 WorldPos0;
+out vec3 Position;
+out vec3 Normal;
+out vec2 TextureCoord;
 
-uniform mat4 MV;
+uniform mat4 ModelViewMatrix;
 
 void main()
 {
-	WorldPos0 = vec3( MV * vec4(Position,1.0) );
-	Normal0 = normalize((MV * vec4(Normal, 0.0)).xyz);  
+	Position = vec3( ModelViewMatrix * vec4(VertexPosition,1.0) );
+	Normal = normalize((ModelViewMatrix * vec4(VertexNormal, 0.0)).xyz);  
+	//TextureCoord = VertexTextureCoord;
+	TextureCoord.x = VertexTextureCoord.x;
+	TextureCoord.y = 1-VertexTextureCoord.y;
 }

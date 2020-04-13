@@ -6,16 +6,16 @@
 
 GeometryPass::GeometryPass()
 {
-	program_ = new ShaderProgram();
+	
 	gBuffer_ = new GBuffer();
-	Renderer::getInstance()->RegisterBuffer("GBuffer", gBuffer_);
+	Renderer::getInstance()->RegisterBuffer("GeometryBuffer", gBuffer_);
 
-	//TODO: Replace by Textures::MAX_TEXTURES?
-	gBuffer_->Initialize(RenderView::getInstance()->getWidth(), RenderView::getInstance()->getHeight(), 5, true);
+	gBuffer_->Initialize(RenderView::getInstance()->getWidth(), RenderView::getInstance()->getHeight(), TexturesOut::NUM_TEXTURES, true);
 
 	Shader* vertShader = Renderer::getInstance()->getShader(GL_VERTEX_SHADER, GEOMETRY_VERTEX_FILE);
 	Shader* fragShader = Renderer::getInstance()->getShader(GL_FRAGMENT_SHADER, GEOMETRY_FRAGMENT_FILE);
 
+	program_ = new ShaderProgram();
 	program_->AttachShader(vertShader);
 	program_->AttachShader(fragShader);
 	program_->LinkProgram();
@@ -36,10 +36,7 @@ void GeometryPass::Apply()
 
 		//Matrices uniforms
 		renderable->ComputeMatrices();
-		//--program_->setUniform("camera_pos", Camera::getInstance()->getPosition());
-		//--program_->setUniform("MVP", renderable->getMVPmtx());
-		program_->setUniform("MV", renderable->getModelmtx());		
-		//--program_->setUniform("projMat", Camera::getInstance()->getProjectionMtx());
+		program_->setUniform("ModelViewMatrix", renderable->getModelmtx());		
 
 		//Material uniforms
 		program_->setUniform("material.diffuse", renderable->getMaterial()->getDiffuseColor());

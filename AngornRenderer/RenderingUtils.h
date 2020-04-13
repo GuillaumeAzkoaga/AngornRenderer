@@ -13,8 +13,8 @@
 #define MULTILIGHTING_FRAGMENT_FILE		"../Shaders/multilighting_pass.frag"
 #define EDGE_DETECTION_VERTEX_FILE		"../Shaders/edge_pass.vert"
 #define EDGE_DETECTION_FRAGMENT_FILE	"../Shaders/edge_pass.frag"
-#define VIEW_VERTEX_FILE				"../Shaders/view.vert"
-#define VIEW_FRAGMENT_FILE				"../Shaders/view.frag"
+#define RENDER_VERTEX_FILE				"../Shaders/render.vert"
+#define RENDER_FRAGMENT_FILE			"../Shaders/render.frag"
 
 enum RenderMode
 {

@@ -1,5 +1,5 @@
-#ifndef RENDER_PASS_H_
-#define RENDER_PASS_H_
+#ifndef IRENDER_PASS_H_
+#define IRENDER_PASS_H_
 
 #include "ShaderProgram.h"
 

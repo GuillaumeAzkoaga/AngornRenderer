@@ -10,17 +10,18 @@ public:
 
 	void Apply();
 
-private:
-	enum Textures
+	enum TexturesOut
 	{
 		Position,
-		Diffuse,
 		Normal,
-		Specular,
+		DiffuseColor,
+		SpecularColor,
 		AmbientColor,
-		MAX_TEXTURES
+		NUM_TEXTURES
 	};
-	GBuffer* gBuffer_;
+
+private:	
+	GBuffer* gBuffer_ = nullptr;
 };
 
 #endif

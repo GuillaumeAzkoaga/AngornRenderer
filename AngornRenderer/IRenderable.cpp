@@ -1,14 +1,16 @@
 #include "IRenderable.h"
 #include "Renderer.h"
 
-IRenderable::IRenderable()
+IRenderable::IRenderable(bool toRegister)
 {
-	Renderer::getInstance()->RegisterRenderable(this);
+	if(toRegister)
+		Renderer::getInstance()->RegisterRenderable(this);
 }
 
-IRenderable::IRenderable(Mesh* mesh, Material* material) : mesh_(mesh), material_(material)
+IRenderable::IRenderable(Mesh* mesh, Material* material, bool toRegister) : mesh_(mesh), material_(material)
 {
-	Renderer::getInstance()->RegisterRenderable(this);
+	if(toRegister)
+		Renderer::getInstance()->RegisterRenderable(this);
 }
 
 void IRenderable::Initialize()
@@ -16,6 +18,7 @@ void IRenderable::Initialize()
 	glGenVertexArrays(1, &vertexArrayObject_);
 	glGenBuffers(1, &vertexBuffer_);
 	glGenBuffers(1, &normalBuffer_);
+	glGenBuffers(1, &textCoordBuffer_);
 	glGenBuffers(1, &indexBuffer_);
 
 	glBindVertexArray(vertexArrayObject_);
@@ -23,6 +26,7 @@ void IRenderable::Initialize()
 	//TODO: if any of those vectors is empty, we should display an error message (better after mesh is loaded than here)
 	const std::vector<glm::vec3> vertices = mesh_->getVertices();
 	const std::vector<glm::vec3> normals = mesh_->getNormals();
+	const std::vector<glm::vec2> textCoords = mesh_->getTextureCoords();
 	const std::vector<unsigned short> indices = mesh_->getIndices();
 	if (!vertices.empty())
 	{
@@ -39,8 +43,17 @@ void IRenderable::Initialize()
 		// Bind a buffer for the indices
 		glBindBuffer(GL_ARRAY_BUFFER, normalBuffer_);
 		glBufferData(GL_ARRAY_BUFFER, normals.size() * sizeof(glm::vec3), &normals[0], GL_STATIC_DRAW);
+		glEnableVertexAttribArray(1);
+		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, (void*)0);
+	}
+
+	if (!textCoords.empty())
+	{
+		// Bind a buffer for the UV coordinates
+		glBindBuffer(GL_ARRAY_BUFFER, textCoordBuffer_);
+		glBufferData(GL_ARRAY_BUFFER, textCoords.size() * sizeof(glm::vec2), &textCoords[0], GL_STATIC_DRAW);
 		glEnableVertexAttribArray(2);
-		glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, 0, (void*)0);
+		glVertexAttribPointer(2, 2, GL_FLOAT, GL_FALSE, 0, (void*)0);
 	}
 
 	if (!indices.empty())
@@ -68,6 +81,7 @@ void IRenderable::Shutdown()
 {
 	glDeleteBuffers(1, &vertexBuffer_);
 	glDeleteBuffers(1, &normalBuffer_);
+	glDeleteBuffers(1, &textCoordBuffer_);
 	glDeleteBuffers(1, &indexBuffer_);
 	glDeleteVertexArrays(1, &vertexArrayObject_);
 }

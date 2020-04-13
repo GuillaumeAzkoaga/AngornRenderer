@@ -17,11 +17,12 @@ public:
 
 	void BindFrameBuffer() const;
 
-private:
+	const std::vector<GLuint> getTexturesList() { return textureList_; }
 
+private:
 	bool isUsingDepth_ = false;
-	GLuint frameBufferOject_ = 0;
-	std::vector<GLuint> textureList_;
+	GLuint frameBufferOject_ = 0;	
 	GLuint depthTexture_ = 0;
+	std::vector<GLuint> textureList_;
 };
 #endif

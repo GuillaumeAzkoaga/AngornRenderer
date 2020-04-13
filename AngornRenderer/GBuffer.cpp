@@ -37,10 +37,10 @@ void GBuffer::Initialize(const unsigned int windowWidth, const unsigned int wind
 		glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 	}
 
-
-	GLenum DrawBuffers[] = { GL_COLOR_ATTACHMENT0,
-								GL_COLOR_ATTACHMENT1,
-								GL_COLOR_ATTACHMENT2,
+	
+	GLenum DrawBuffers[] = {	GL_COLOR_ATTACHMENT0,	
+								GL_COLOR_ATTACHMENT1,	
+								GL_COLOR_ATTACHMENT2,	
 								GL_COLOR_ATTACHMENT3,
 								GL_COLOR_ATTACHMENT4 };
 

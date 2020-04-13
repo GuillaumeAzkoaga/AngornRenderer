@@ -102,6 +102,12 @@
     <ClCompile Include="RenderingUtils.cpp">
       <Filter>Source Files\Utils</Filter>
     </ClCompile>
+    <ClCompile Include="LightPass.cpp">
+      <Filter>Source Files\Graphics\DeferredRendering\RenderPasses</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderPass.cpp">
+      <Filter>Source Files\Graphics\DeferredRendering\RenderPasses</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="RenderView.h">
@@ -160,6 +166,18 @@
     </ClInclude>
     <ClInclude Include="IRenderPass.h">
       <Filter>Source Files\Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Light.h">
+      <Filter>Source Files\Objects\ObjectsType</Filter>
+    </ClInclude>
+    <ClInclude Include="LightPass.h">
+      <Filter>Source Files\Graphics\DeferredRendering\RenderPasses</Filter>
+    </ClInclude>
+    <ClInclude Include="OutputRenderable.h">
+      <Filter>Source Files\Objects\ObjectsType</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderPass.h">
+      <Filter>Source Files\Graphics\DeferredRendering\RenderPasses</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
