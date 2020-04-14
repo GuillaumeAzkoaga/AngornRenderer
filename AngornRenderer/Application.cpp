@@ -25,12 +25,11 @@ void Application::ExitApplication()
 
 void Application::Initialize()
 {
-	isRunning_ = true;
-	CreateScene();
-
 	RenderView::getInstance()->Initialize();	
 	InputManager::getInstance()->Initialize();	
 	Camera::getInstance()->Initialize();
+
+	CreateScene();
 	Renderer::getInstance()->Initialize();
 
 	
@@ -65,7 +64,7 @@ void Application::CreateScene()
 {
 	Camera::getInstance()->CreateCamera(glm::vec3(-1000.f, 0.0f, 0.0f));
 
-	DEBUG_OBJECT = new Ball(glm::vec3(0, 50, 0), glm::vec3(500), glm::angleAxis(0.0f, glm::vec3(1, 0, 0)), new Material(MATERIAL_TYPE::MAT_NORMAL));
+	DEBUG_OBJECT = new Ball(glm::vec3(0, 50, 0), glm::vec3(500), glm::angleAxis(0.0f, glm::vec3(1, 0, 0)), new Material(MATERIAL_TYPE::MAT_RUBY));
 	DEBUG_LIGHTS.push_back(new Light(glm::vec3(0, 500, 0), glm::vec3(1)));
 }
 

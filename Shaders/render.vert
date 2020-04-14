@@ -1,12 +1,12 @@
 #version 400
 
-layout (location = 0) in vec3 Position;
-layout (location = 2) in vec2 TexCoord;
+layout (location = 0) in vec3 VertexPosition;
+layout (location = 2) in vec2 VertexTextureCoord;
 
-out vec2 VertexTextureCoord;
+out vec2 TextureCoord;
 
 void main()
 {
-  VertexTextureCoord = TexCoord;
-  gl_Position = vec4(Position,1.0);
+  TextureCoord = VertexTextureCoord;
+  gl_Position = vec4(VertexPosition,1.0);
 }

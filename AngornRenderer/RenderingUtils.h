@@ -9,6 +9,8 @@
 // Shader paths
 #define GEOMETRY_VERTEX_FILE			"../Shaders/geometry_pass.vert"
 #define GEOMETRY_FRAGMENT_FILE			"../Shaders/geometry_pass.frag"
+#define TESS_CONTROL_FILE				"../Shaders/tess_control.sh"
+#define TESS_EVAL_FILE					"../Shaders/tess_eval.sh"
 #define MULTILIGHTING_VERTEX_FILE		"../Shaders/multilighting_pass.vert"
 #define MULTILIGHTING_FRAGMENT_FILE		"../Shaders/multilighting_pass.frag"
 #define EDGE_DETECTION_VERTEX_FILE		"../Shaders/edge_pass.vert"

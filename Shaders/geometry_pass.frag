@@ -1,8 +1,8 @@
 #version 400
 
-in vec3 Position;
 in vec3 Normal;
-in vec2 TextureCoord;
+in vec3 Position;
+in vec2 UV;      
 
 layout (location = 0) out vec3 FragPosition;
 layout (location = 1) out vec3 FragNormal;
@@ -22,8 +22,9 @@ void main()
 {
 	FragPosition = Position;
 	FragNormal = normalize(Normal);	
-
+	
 	FragDiffuseColor = material.diffuse;
 	FragSpecularColor = material.specular;	
 	FragAmbientColor = material.ambient;
+
 }

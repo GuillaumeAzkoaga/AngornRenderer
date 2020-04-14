@@ -29,6 +29,7 @@ void LightPass::Apply()
 
 	//Get the GeometryBuffer and bind the Geometry Pass textures
 	GBuffer* geometryBuffer = Renderer::getInstance()->getBuffer("GeometryBuffer");
+
 	//Position Texture
 	glActiveTexture(GL_TEXTURE0 + GeometryPass::TexturesOut::Position);
 	glBindTexture(GL_TEXTURE_2D, geometryBuffer->getTexturesList()[GeometryPass::Position]);
@@ -50,7 +51,7 @@ void LightPass::Apply()
 	glBindTexture(GL_TEXTURE_2D, geometryBuffer->getTexturesList()[GeometryPass::AmbientColor]);
 	program_->setUniform("AmbientColorTexture", GeometryPass::TexturesOut::AmbientColor);
 	
-
+	glDisable(GL_DEPTH_TEST);
 	//Get lights data
 	const std::vector<Light*> lights = Application::getInstance()->getLights();
 	//TODO. make this cleaner

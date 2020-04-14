@@ -25,6 +25,7 @@ Material::Material(MATERIAL_TYPE type) : type_(type)
 			specular_ = glm::vec3(1.0f, 1.0f, 1.0f);
 			break;
 		}
+
 	}
 }
 

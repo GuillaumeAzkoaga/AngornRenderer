@@ -3,10 +3,10 @@
 #include "RenderView.h"
 #include "RenderingUtils.h"
 #include "Camera.h"
+#include "Light.h"
 
 GeometryPass::GeometryPass()
-{
-	
+{	
 	gBuffer_ = new GBuffer();
 	Renderer::getInstance()->RegisterBuffer("GeometryBuffer", gBuffer_);
 
@@ -15,9 +15,15 @@ GeometryPass::GeometryPass()
 	Shader* vertShader = Renderer::getInstance()->getShader(GL_VERTEX_SHADER, GEOMETRY_VERTEX_FILE);
 	Shader* fragShader = Renderer::getInstance()->getShader(GL_FRAGMENT_SHADER, GEOMETRY_FRAGMENT_FILE);
 
+	Shader* TessControlShader = Renderer::getInstance()->getShader(GL_TESS_CONTROL_SHADER, TESS_CONTROL_FILE);
+	Shader* TessEvalShader = Renderer::getInstance()->getShader(GL_TESS_EVALUATION_SHADER, TESS_EVAL_FILE);
+
 	program_ = new ShaderProgram();
 	program_->AttachShader(vertShader);
+	program_->AttachShader(TessControlShader);
+	program_->AttachShader(TessEvalShader);
 	program_->AttachShader(fragShader);
+
 	program_->LinkProgram();
 }
 
@@ -28,21 +34,34 @@ void GeometryPass::Apply()
 	gBuffer_->BindFrameBuffer();
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+	program_->setUniform("projection", Camera::getInstance()->getProjectionMtx());
+	program_->setUniform("view", Camera::getInstance()->getViewMtx());
+	program_->setUniform("camera_pos", Camera::getInstance()->getPosition());
+
 	std::vector<IRenderable*> renderables = Renderer::getInstance()->getRenderables();
 	for (IRenderable* renderable : renderables)
 	{
 		if (renderable == nullptr)
 			continue;
 
-		//Matrices uniforms
-		renderable->ComputeMatrices();
-		program_->setUniform("ModelViewMatrix", renderable->getModelmtx());		
-
+		//Mesh uniforms
+		program_->setUniform("model", renderable->getModelMatrix());
+			
+		
+		//Tesselation uniforms
+		program_->setUniform("uTessAlpha",0.7f);
+		program_->setUniform("uTessLevelsOuter", 10.0f);
+		program_->setUniform("uTessLevelsInner", 10.0f);
+		program_->setUniform("slope", -0.00001f);
+		program_->setUniform("m", 0.4f);
+		program_->setUniform("useAdaptive", 0);
+		
 		//Material uniforms
 		program_->setUniform("material.diffuse", renderable->getMaterial()->getDiffuseColor());
 		program_->setUniform("material.specular", renderable->getMaterial()->getSpecularColor());
 		program_->setUniform("material.ambient", renderable->getMaterial()->getAmbientColor());
 		
+
 		glPatchParameteri(GL_PATCH_VERTICES, 3);
 		renderable->Render(GL_PATCHES, false);
 	}

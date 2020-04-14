@@ -37,7 +37,7 @@ private:
 	std::vector<Light*> DEBUG_LIGHTS;
 
 	static Application* instance_;
-	bool isRunning_ = false;
+	bool isRunning_ = true;
 };
 
 #endif

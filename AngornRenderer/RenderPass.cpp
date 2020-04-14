@@ -31,7 +31,7 @@ void RenderPass::Apply()
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	glActiveTexture(GL_TEXTURE2);
-	glBindTexture(GL_TEXTURE_2D, NormalTexture);
+	glBindTexture(GL_TEXTURE_2D, FinalTexture);
 
 	program_->setUniform("TextureToRender", 2);
 

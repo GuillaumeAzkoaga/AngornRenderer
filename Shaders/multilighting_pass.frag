@@ -2,13 +2,8 @@
 
 in vec2 TextureCoord;
 
-layout (location = 0) out vec3 FragLightning;
+layout (location = 0) out vec3 MultiLightingOut;
 
-uniform sampler2D PositionTexture;
-uniform sampler2D NormalTexture;
-uniform sampler2D DiffuseColorTexture;
-uniform sampler2D SpecularColorTexture;
-uniform sampler2D AmbientColorTexture;
 
 struct Light
 {
@@ -16,12 +11,16 @@ struct Light
 	vec3 color;
 	float intensity;
 };
-uniform Light lights[1];
+uniform Light lights[10];
 uniform int uLightAmount;
 
 uniform vec3 viewPos;
 
-
+uniform sampler2D PositionTexture;
+uniform sampler2D NormalTexture;
+uniform sampler2D DiffuseColorTexture;
+uniform sampler2D SpecularColorTexture;
+uniform sampler2D AmbientColorTexture;
 
 vec3 PointLight(int i, vec3 pos, vec3 norm, vec3 diff, vec3 spec, vec3 amb)
 {
@@ -48,10 +47,10 @@ void main()
 	vec3 spec = vec3(texture(SpecularColorTexture, TextureCoord));
 	vec3 ambient = vec3(texture(AmbientColorTexture, TextureCoord));
 	
-	FragLightning = vec3(0,0,0);
+	MultiLightingOut = vec3(0,0,0);
 	
 	for ( int count = 0; count < uLightAmount; ++count)
 	{
-		FragLightning += PointLight(count, pos, norm, diff, spec, ambient);
+		MultiLightingOut += PointLight(count, pos, norm, diff, spec, ambient);
 	}
 }

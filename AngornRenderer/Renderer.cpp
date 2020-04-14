@@ -98,18 +98,13 @@ void Renderer::Initialize()
 
 void Renderer::Update(float dt)
 {
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
 	//TODO: Apply render passes
 	GeometryPass_->Apply();
 	LightPass_->Apply();
 	RenderPass_->Apply();
 
 	glUseProgram(0);
-	//glBindBuffer(GL_FRAMEBUFFER, 0); //-> if we have this we triggerGL Error: GL_INVALID_ENUM error generated. Invalid buffer target enum.
 
-	glFlush();
-	glFinish();
 	SwapBuffers(deviceContext_);	
 }
 

@@ -4,7 +4,7 @@
 #include "MathUtils.h"
 
 enum class MATERIAL_TYPE
-{
+{	
 	MAT_RUBY,
 	MAT_CHROME,
 	MAT_NORMAL,
