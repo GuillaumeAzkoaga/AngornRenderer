@@ -39,8 +39,8 @@ void GLAPIENTRY MessageCallback(GLenum source,
 {        
     std::cout << "GL Error: " + std::string(message) << std::endl;
 
-	/*fprintf(stderr, "GL CALLBACK: %s type = 0x%x, severity = 0x%x, message = %s\n",
+	fprintf(stderr, "GL CALLBACK: %s type = 0x%x, severity = 0x%x, message = %s\n",
 		(type == GL_DEBUG_TYPE_ERROR ? "** GL ERROR **" : ""),
-		type, severity, message);*/
+		type, severity, message);
 }
 

@@ -115,8 +115,9 @@ void Camera::RotateCamera(float dt)
 	// We have to remember that positive rotation is counter-clockwise. 
 	// Moving the mouse down is a negative rotation about the x axis
 	// Moving the mouse right is a negative rotation about the y axis
-	MouseDirection.x = -(middleScreenCoords.x - (-1) * -mouseCoords.x) * getMouseSensitivity() * dt;
-	MouseDirection.y = -(middleScreenCoords.y - (-1) * mouseCoords.y) * getMouseSensitivity() * dt;
+	float mouseSensitivity = MIN_MOUSE_SENSITIVITY + (MAX_MOUSE_SENSITIVITY - MIN_MOUSE_SENSITIVITY) * sensitivityModifier_;
+	MouseDirection.x = -(middleScreenCoords.x - (-1) * mouseCoords.x) * mouseSensitivity * dt;
+	MouseDirection.y = -(middleScreenCoords.y - (-1) * -mouseCoords.y) * mouseSensitivity * dt;
 
 	// Smooth the movement of the mouse (interpolate)
 	SmoothExponentialDecay2D(dt, SPRINGNESS_ROTATION, mouseDisplacement_, MouseDirection);
@@ -148,12 +149,11 @@ void Camera::RotateCamera(float dt)
 	// rotate around must be normalized.
 	Axis = glm::normalize(Axis);
 	// Store values
-	mouseDisplacement_.x = MouseDirection.x;
-	mouseDisplacement_.y = MouseDirection.y;
+	mouseDisplacement_ = MouseDirection;
 	// Rotate certain amount around right/left vector
-	RotateAnglesAroundVectorUsingQuat(MouseDirection.y, Axis.x, Axis.y, Axis.z);
+	RotateAnglesAroundVectorUsingQuat(MouseDirection.y, Axis);
 	// Rotate certain amount around up vector
-	RotateAnglesAroundVectorUsingQuat(MouseDirection.x, 0, 1, 0);
+	RotateAnglesAroundVectorUsingQuat(MouseDirection.x, glm::vec3(0,1,0));
 	// Recompute the target, otherwise you can't imagine how wrong it's going to be
 	target_ = position_ + view_;
 }
@@ -161,9 +161,9 @@ void Camera::RotateCamera(float dt)
 void Camera::ComputeCameraMatrices()
 {
 	// TODO: do we need to perform this sanity normalize? If we do, we can't do it on zero vectors!!!
-	/*right_ = glm::normalize(right_);
+	right_ = glm::normalize(right_);
 	up_ = glm::normalize(up_);
-	view_ = glm::normalize(view_);*/
+	view_ = glm::normalize(view_);
 
 	// Computations
 	right_ = glm::normalize(glm::cross(view_, glm::vec3(0.0f, 1.0f, 0.0f)));
@@ -176,13 +176,10 @@ void Camera::ComputeCameraMatrices()
 
 
 
-void Camera::RotateAnglesAroundVectorUsingQuat(float Angle, float x, float y, float z)
+void Camera::RotateAnglesAroundVectorUsingQuat(float Angle, glm::vec3 vector)
 {
 	glm::quat temp, quat_view, result;
-
-	temp.x = x * sin(Angle / 2);
-	temp.y = y * sin(Angle / 2);
-	temp.z = z * sin(Angle / 2);
+	temp = vector * sin(Angle / 2);
 	temp.w = cos(Angle / 2);
 
 	quat_view.x = view_.x;
@@ -191,10 +188,7 @@ void Camera::RotateAnglesAroundVectorUsingQuat(float Angle, float x, float y, fl
 	quat_view.w = 0;
 
 	result = (temp * quat_view) * glm::conjugate(temp);
-
-	view_.x = result.x;
-	view_.y = result.y;
-	view_.z = result.z;
+	view_ = glm::vec3(result.x, result.y, result.z);
 }
 
 void Camera::SmoothExponentialDecay2D(float dt, float springness, glm::vec2 real, glm::vec2& use)
@@ -214,15 +208,3 @@ void Camera::SmoothExponentialDecay3D(float dt, float springness, glm::vec3 real
 	float d = 1 - exp(log(0.5f) * springness * dt);
 	use += (real - use)*d;
 }
-
-
-
-///////////////////////////////////////////// GETTORS /////////////////////////////////////////////
-
-float Camera::getMouseSensitivity(void) const
-{
-	return MIN_MOUSE_SENSITIVITY + (MAX_MOUSE_SENSITIVITY - MIN_MOUSE_SENSITIVITY) * sensitivityModifier_;
-}
-
-
-

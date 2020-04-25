@@ -1,6 +1,7 @@
 #ifndef CAMERA_H_
 #define CAMERA_H_
 
+
 #include "MathUtils.h"
 #include "ISystem.h"
 
@@ -30,7 +31,6 @@ public:
 	void RotateCamera(float dt);
 	void ComputeCameraMatrices();
 
-	float getMouseSensitivity() const;
 	glm::mat4 getProjectionMtx() const { return projMat_; }
 	glm::mat4 getViewMtx() const { return viewMat_; }
 
@@ -43,7 +43,7 @@ private:
 	bool isMouseLocked_ = true;	// To use mouse input or not
 
 	// Helper functions
-	void RotateAnglesAroundVectorUsingQuat(float Angle, float x, float y, float z);
+	void RotateAnglesAroundVectorUsingQuat(float Angle, glm::vec3 vector);
 	void SmoothExponentialDecay2D(float dt, float springness, glm::vec2 real, glm::vec2& use);
 	void SmoothExponentialDecay3D(float dt, float springness, glm::vec3 real, glm::vec3& use);
 
@@ -75,8 +75,6 @@ private:
 
 	// Sensitivity 
 	float sensitivityModifier_ = 0.5f;		// Goes from 0 to 1 (0.5 = default sensitivity)
-
 };
-
 
 #endif

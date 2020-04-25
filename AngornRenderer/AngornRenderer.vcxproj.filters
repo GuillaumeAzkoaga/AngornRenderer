@@ -114,6 +114,9 @@
     <ClCompile Include="RenderPass.cpp">
       <Filter>Source Files\Graphics\DeferredRendering\RenderPasses</Filter>
     </ClCompile>
+    <ClCompile Include="FrameRateController.cpp">
+      <Filter>Source Files\Window</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="RenderView.h">
@@ -184,6 +187,9 @@
     </ClInclude>
     <ClInclude Include="RenderPass.h">
       <Filter>Source Files\Graphics\DeferredRendering\RenderPasses</Filter>
+    </ClInclude>
+    <ClInclude Include="FrameRateController.h">
+      <Filter>Source Files\Window</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

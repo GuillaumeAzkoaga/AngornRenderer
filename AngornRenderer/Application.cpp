@@ -4,6 +4,7 @@
 #include "Renderer.h"
 #include "Camera.h"
 #include "ResourceLoader.h"
+#include "FrameRateController.h"
 
 Application* Application::instance_ = 0;
 
@@ -39,13 +40,18 @@ void Application::Update(float dt)
 {
 	while (isRunning_)
 	{
+		FrameRateController::getInstance()->StartFrame();
+
+		dt = static_cast<float>(FrameRateController::getInstance()->getCurrentFrameTime());
 		InputManager::getInstance()->Update(dt);
 		RenderView::getInstance()->Update(dt);
 		Camera::getInstance()->Update(dt);
-		Renderer::getInstance()->Update();
+		Renderer::getInstance()->Update(dt);
 
 		if (InputManager::getInstance()->KeyIsTriggered(VK_ESCAPE))
-			isRunning_ = false;		
+			isRunning_ = false;	
+
+		FrameRateController::getInstance()->EndFrame();
 	}
 }
 

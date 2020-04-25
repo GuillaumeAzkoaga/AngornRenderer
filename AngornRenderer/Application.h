@@ -19,7 +19,7 @@ public:
 
 	void RunApplication(HINSTANCE hinstance, int show, int WindowWidth, int WindowHeight, const char * WindowTitle);
 	void ExitApplication();
-
+	
 	//TODO: This should be handled by scene class
 	const std::vector<Light*> getLights() const {return DEBUG_LIGHTS;}
 
@@ -33,7 +33,6 @@ private:
 	void CreateScene();
 
 	Ball* DEBUG_OBJECT = nullptr;
-	//Light* DEBUG_LIGHT = nullptr;
 	std::vector<Light*> DEBUG_LIGHTS;
 
 	static Application* instance_;
