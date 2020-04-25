@@ -52,6 +52,12 @@
     <Filter Include="Source Files\Objects\ObjectsType">
       <UniqueIdentifier>{463aab5b-be03-4718-afa8-ef89ab9736f1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\Meshes">
+      <UniqueIdentifier>{0510bd92-0e3d-4343-a258-7bda06eb6a0a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Shaders">
+      <UniqueIdentifier>{e25c5885-9545-4611-9539-a1cfdad4363c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="RenderView.cpp">
@@ -179,5 +185,60 @@
     <ClInclude Include="RenderPass.h">
       <Filter>Source Files\Graphics\DeferredRendering\RenderPasses</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Shaders\edge_pass.frag">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\edge_pass.vert">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\geometry_pass.frag">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\geometry_pass.vert">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\multilighting_pass.frag">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\multilighting_pass.vert">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\render.frag">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\render.vert">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\tess_control.sh">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="..\Shaders\tess_eval.sh">
+      <Filter>Resource Files\Shaders</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Object Include="..\Meshes\cube.obj">
+      <Filter>Resource Files\Meshes</Filter>
+    </Object>
+    <Object Include="..\Meshes\Floor.obj">
+      <Filter>Resource Files\Meshes</Filter>
+    </Object>
+    <Object Include="..\Meshes\Luma.obj">
+      <Filter>Resource Files\Meshes</Filter>
+    </Object>
+    <Object Include="..\Meshes\plane.obj">
+      <Filter>Resource Files\Meshes</Filter>
+    </Object>
+    <Object Include="..\Meshes\Plane_Complex.obj">
+      <Filter>Resource Files\Meshes</Filter>
+    </Object>
+    <Object Include="..\Meshes\sphere_8_4.obj">
+      <Filter>Resource Files\Meshes</Filter>
+    </Object>
+    <Object Include="..\Meshes\sphere_100_50.obj">
+      <Filter>Resource Files\Meshes</Filter>
+    </Object>
   </ItemGroup>
 </Project>
