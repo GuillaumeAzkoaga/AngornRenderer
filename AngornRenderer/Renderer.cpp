@@ -74,6 +74,7 @@ void Renderer::Initialize()
 
 	glViewport(0, 0, RenderView::getInstance()->getWidth(), RenderView::getInstance()->getHeight());
 
+	wglSwapIntervalEXT(1);
 	glEnable(GL_DEBUG_OUTPUT);
 	glDebugMessageCallback(MessageCallback, 0);
 
@@ -86,19 +87,19 @@ void Renderer::Initialize()
 	{
 		renderable->Initialize();
 	}
-	//TODO: Initialize render passes
+	//Initialize render passes
 	GeometryPass_ = new GeometryPass();
 	LightPass_ = new LightPass();
 	RenderPass_ = new RenderPass();
 
-	//TODO: Create the ToRenderQuad
+	//Create the ToRenderQuad
 	toRenderQuad = new OutputRenderable();
 	glCheckError();
 }
 
 void Renderer::Update(float dt)
 {
-	//TODO: Apply render passes
+	//Apply render passes
 	GeometryPass_->Apply();
 	LightPass_->Apply();
 	RenderPass_->Apply();

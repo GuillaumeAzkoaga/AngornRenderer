@@ -12,7 +12,7 @@ struct Light
 	float intensity;
 };
 uniform Light lights[10];
-uniform int uLightAmount;
+uniform int lightsCount;
 
 uniform vec3 viewPos;
 
@@ -49,7 +49,7 @@ void main()
 	
 	MultiLightingOut = vec3(0,0,0);
 	
-	for ( int count = 0; count < uLightAmount; ++count)
+	for ( int count = 0; count < lightsCount; ++count)
 	{
 		MultiLightingOut += PointLight(count, pos, norm, diff, spec, ambient);
 	}

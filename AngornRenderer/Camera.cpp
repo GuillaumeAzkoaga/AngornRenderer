@@ -160,7 +160,6 @@ void Camera::RotateCamera(float dt)
 
 void Camera::ComputeCameraMatrices()
 {
-	// TODO: do we need to perform this sanity normalize? If we do, we can't do it on zero vectors!!!
 	right_ = glm::normalize(right_);
 	up_ = glm::normalize(up_);
 	view_ = glm::normalize(view_);

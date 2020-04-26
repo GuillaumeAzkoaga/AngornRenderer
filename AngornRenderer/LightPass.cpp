@@ -54,21 +54,15 @@ void LightPass::Apply()
 	glDisable(GL_DEPTH_TEST);
 	//Get lights data
 	const std::vector<Light*> lights = Application::getInstance()->getLights();
-	//TODO. make this cleaner
-	int index = 0;
-	for (auto it(lights.cbegin()), end(lights.cend()); it != end; ++it, ++index)
+	unsigned index = 0;
+	for (Light* light : lights)
 	{
-		Light* light = *it;
-		
-		char temp[32];
-		sprintf_s(temp, "lights[%d].color", index);
-		program_->setUniform(temp, light->getColor());
-		sprintf_s(temp, "lights[%d].intensity", index);
-		program_->setUniform(temp, light->getIntensity());
-		sprintf_s(temp, "lights[%d].pos", index);
-		program_->setUniform(temp, light->getPosition());
+		program_->setUniform("lights[" + std::to_string(index) + "].color", light->getColor());
+		program_->setUniform("lights[" + std::to_string(index) + "].intensity", light->getIntensity());
+		program_->setUniform("lights[" + std::to_string(index) + "].coposlor", light->getPosition());
+		index++;
 	}
-	program_->setUniform("uLightAmount", (int)(lights.size()));
+	program_->setUniform("lightsCount", static_cast<int>(lights.size()));
 
 	program_->setUniform("viewPos", Camera::getInstance()->getPosition());
 

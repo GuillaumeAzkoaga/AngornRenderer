@@ -5,8 +5,6 @@
 
 #include <vector>
 
-//TODO: Make so that the depthTexture is always the last one so textureList_[textureAmount-1]
-
 class GBuffer
 {
 public:

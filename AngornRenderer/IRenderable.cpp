@@ -23,7 +23,6 @@ void IRenderable::Initialize()
 
 	glBindVertexArray(vertexArrayObject_);
 
-	//TODO: if any of those vectors is empty, we should display an error message (better after mesh is loaded than here)
 	const std::vector<glm::vec3> vertices = mesh_->getVertices();
 	const std::vector<glm::vec3> normals = mesh_->getNormals();
 	const std::vector<glm::vec2> textCoords = mesh_->getTextureCoords();
