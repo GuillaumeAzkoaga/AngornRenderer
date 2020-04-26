@@ -13,7 +13,7 @@ public:
 
 private:
 	void LoadTexture();
-	GLuint textureID_ = 0;
+	GLuint textureID_;
 
 	std::string textureFileName_;
 };

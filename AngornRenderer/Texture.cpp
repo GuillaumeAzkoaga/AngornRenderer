@@ -1,5 +1,6 @@
 #include "Texture.h"
 #include "RenderView.h"
+#include "stb_image.h"
 
 #include <fstream>
 
@@ -13,59 +14,31 @@ Texture::Texture(std::string textureName, std::string textureDiffuse, std::strin
 
 TextureChannel::TextureChannel(std::string textureFile) : textureFileName_(textureFile)
 {
-	LoadTexture();
+	glGenTextures(1, &textureID_);
+	glBindTexture(GL_TEXTURE_2D, textureID_);
+	// set the texture wrapping/filtering options (on the currently bound texture object)
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+	// load and generate the texture
+	int width, height, nrChannels;
+	unsigned char* data = stbi_load(textureFileName_.c_str(), &width, &height, &nrChannels, 0);
+	if (data)
+	{
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
+		//glGenerateMipmap(GL_TEXTURE_2D);
+	}
+	else
+	{
+		MessageBox(RenderView::getInstance()->getHandle(), ("Failed to load texture from file " + textureFileName_ + ".").c_str(), "Texture Load Error", MB_TASKMODAL | MB_SETFOREGROUND | MB_ICONERROR);
+	}
+	stbi_image_free(data);
 }
 
 void TextureChannel::LoadTexture()
 {
-	std::ifstream is(textureFileName_.c_str(), std::ifstream::binary);
-	if (is)
-	{
-		// get length of file:
-		is.seekg(0, is.end);
-		unsigned int length = int(is.tellg());
-		is.seekg(0, is.beg);
-
-
-		char* imgBuffer = new char[length];
-		// read data as a block:
-		is.read(imgBuffer, length);
-
-		if (!is)
-		{
-			MessageBox(RenderView::getInstance()->getHandle(), ("Failed to load texture from file " + textureFileName_ + ".").c_str(), "Texture Load Error", MB_TASKMODAL | MB_SETFOREGROUND | MB_ICONERROR);
-			is.close();
-			
-		}
-		else
-		{
-			is.close();
-			//textureID_ = SOIL_load_OGL_texture_from_memory((unsigned char*)imgBuffer, length * sizeof(char), SOIL_LOAD_AUTO, SOIL_CREATE_NEW_ID, SOIL_FLAG_MIPMAPS | SOIL_FLAG_DDS_LOAD_DIRECT);		
-			//textureID_ = SOIL_load_OGL_texture(textureFileName_.c_str(), SOIL_LOAD_AUTO, SOIL_CREATE_NEW_ID, SOIL_FLAG_DDS_LOAD_DIRECT);
-
-			// Check if the texture was loaded correctly
-			if (textureID_ == 0)
-				MessageBox(RenderView::getInstance()->getHandle(), ("Failed to load texture from file " + textureFileName_ + ".").c_str(), "Texture Load Error", MB_TASKMODAL | MB_SETFOREGROUND | MB_ICONERROR);
-			else
-			{
-				// "Bind" the newly created texture : all future texture functions will modify this texture
-				glBindTexture(GL_TEXTURE_2D, textureID_);
-
-				//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-				//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-
-				glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-				glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-			}
-		}
-		
-
-		
-
-		
-
-	}
-		
 	
 
+	
 }
