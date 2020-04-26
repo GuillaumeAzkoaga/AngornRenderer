@@ -41,7 +41,7 @@ private:
 	/// <returns> Current time</returns>
 	double getTime();
 
-	double        minimumFrameRate_ = 1 / minimumFrameRate_;
+	double        minimumFrameRate_ = 1 / minimumFrameTime_;
 	double        minimumFrameTime_ = 0.016666667f;
 	double        frameTime_ = 0;
 	double        frameRate_ = 0;

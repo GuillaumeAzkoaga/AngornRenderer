@@ -1,7 +1,8 @@
 #include "RenderingUtils.h"
+#include "RenderView.h"
+
 #include <iostream>
 #include <cstdio>
-
 #include <string>
 
 
@@ -23,7 +24,7 @@ GLenum glCheckError_(const char* file, int line)
         }
        
         std::string out = "GL_" + error + " at " + std::string(file) + " (" + std::to_string(line)+  ")." + "\n \nMore details in errorlog.txt" ;
-        MessageBox(NULL, out.c_str(), "GL ERROR" , MB_TASKMODAL | MB_SETFOREGROUND | MB_ICONERROR);
+        MessageBox(RenderView::getInstance()->getHandle(), out.c_str(), "GL ERROR" , MB_TASKMODAL | MB_SETFOREGROUND | MB_ICONERROR);
         ExitProcess(0);
     }
     return errorCode;

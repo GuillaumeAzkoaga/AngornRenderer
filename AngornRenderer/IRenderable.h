@@ -6,6 +6,7 @@
 
 #include "Material.h"
 #include "Mesh.h"
+#include "Texture.h"
 #include "ShaderProgram.h"
 
 //TODO: Mesh and materials should be loaded from a file and not set manually (custom JSON?)
@@ -25,10 +26,12 @@ public:
 		return  trans * rot * scale;
 	}
 	const Material* getMaterial() const { return material_; }
+	const Texture* getTexture() const { return texture_; }
 
 protected:
-	IRenderable(bool toRegister = true);
-	IRenderable(Mesh* mesh, Material* material, bool toRegister = true);
+	IRenderable(bool toRender = true);
+	IRenderable(Mesh* mesh, Material* material, bool toRender = true);
+	IRenderable(Mesh* mesh, Texture* texture, bool toRender = true);
 
 	glm::vec3 position_ = glm::vec3();
 	glm::vec3 scale_ = glm::vec3();
@@ -36,7 +39,7 @@ protected:
 
 	Mesh* mesh_ = nullptr;
 	Material* material_ = nullptr;
-
+	Texture* texture_ = nullptr;
 private:
 	GLuint vertexArrayObject_ = 0;
 	GLuint vertexBuffer_ = 0;

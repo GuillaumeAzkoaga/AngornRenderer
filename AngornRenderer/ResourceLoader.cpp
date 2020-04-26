@@ -27,3 +27,16 @@ Material* ResourceLoader::getMaterial(const MATERIAL_TYPE type)
 	materials_.push_back(material);
 	return material;
 }
+
+Texture* ResourceLoader::getTexture(const std::string textureName, std::string textureDiffuse, std::string textureSpecular, std::string textureAmbient)
+{
+	for (Texture* texture : textures_)
+	{
+		if (texture->getName() == textureName)
+			return texture;
+	}
+
+	Texture* texture = new Texture(textureName, textureDiffuse, textureSpecular, textureAmbient);
+	textures_.push_back(texture);
+	return texture;
+}

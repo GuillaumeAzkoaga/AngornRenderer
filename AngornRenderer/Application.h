@@ -33,6 +33,8 @@ private:
 	void CreateScene();
 
 	Ball* DEBUG_OBJECT = nullptr;
+	Ball* DEBUG_OBJECT_TEXTURES = nullptr;
+
 	std::vector<Light*> DEBUG_LIGHTS;
 
 	static Application* instance_;

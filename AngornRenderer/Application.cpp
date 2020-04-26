@@ -70,7 +70,11 @@ void Application::CreateScene()
 {
 	Camera::getInstance()->CreateCamera(glm::vec3(-1000.f, 0.0f, 0.0f));
 
-	DEBUG_OBJECT = new Ball(glm::vec3(0, 50, 0), glm::vec3(500), glm::angleAxis(0.0f, glm::vec3(1, 0, 0)), new Material(MATERIAL_TYPE::MAT_RUBY));
+	DEBUG_OBJECT = new Ball(glm::vec3(0, 0, 0), glm::vec3(200), glm::angleAxis(0.0f, glm::vec3(1, 0, 0)), ResourceLoader::getInstance()->getMaterial(MATERIAL_TYPE::MAT_RUBY));
+	//Texture* earth = ResourceLoader::getInstance()->getTexture("Earth", "..//Textures//moon.DDS");
+	//Texture* earth = ResourceLoader::getInstance()->getTexture("Earth", "..//Textures//earth.png");
+	//DEBUG_OBJECT_TEXTURES = new Ball(glm::vec3(0, 0, -500), glm::vec3(100), glm::angleAxis(0.0f, glm::vec3(1, 0, 0)), earth);
+
 	DEBUG_LIGHTS.push_back(new Light(glm::vec3(0, 500, 0), glm::vec3(1)));
 }
 

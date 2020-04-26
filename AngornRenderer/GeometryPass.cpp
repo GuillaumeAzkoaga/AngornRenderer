@@ -47,7 +47,6 @@ void GeometryPass::Apply()
 		//Mesh uniforms
 		program_->setUniform("model", renderable->getModelMatrix());
 			
-		
 		//Tesselation uniforms
 		program_->setUniform("uTessAlpha",0.7f);
 		program_->setUniform("uTessLevelsOuter", 10.0f);
@@ -56,11 +55,33 @@ void GeometryPass::Apply()
 		program_->setUniform("m", 0.4f);
 		program_->setUniform("useAdaptive", 0);
 		
-		//Material uniforms
-		program_->setUniform("material.diffuse", renderable->getMaterial()->getDiffuseColor());
-		program_->setUniform("material.specular", renderable->getMaterial()->getSpecularColor());
-		program_->setUniform("material.ambient", renderable->getMaterial()->getAmbientColor());
-		
+		//Texture uniforms
+		const Texture* texture = renderable->getTexture();
+		if (texture)
+		{
+			program_->setUniform("hasTextures", 1);
+			glActiveTexture(GL_TEXTURE0);
+			glBindTexture(GL_TEXTURE_2D, texture->getDiffuseTexture());
+			program_->setUniform("textureDiffuse", 0);
+
+			glActiveTexture(GL_TEXTURE1);
+			glBindTexture(GL_TEXTURE_2D, texture->getSpecularTexture());
+			program_->setUniform("textureSpecular", 1);
+
+			glActiveTexture(GL_TEXTURE2);
+			glBindTexture(GL_TEXTURE_2D, texture->getAmbientTexture());
+			program_->setUniform("textureAmbient", 2);
+		}
+		else
+		{
+			program_->setUniform("hasTextures", 0);
+
+			//Material uniforms
+			const Material* material = renderable->getMaterial();			
+			program_->setUniform("materialDiffuse", material->getDiffuseColor());
+			program_->setUniform("materialSpecular", material->getSpecularColor());
+			program_->setUniform("materialAmbient", material->getAmbientColor());
+		}	
 
 		glPatchParameteri(GL_PATCH_VERTICES, 3);
 		renderable->Render(GL_PATCHES, false);

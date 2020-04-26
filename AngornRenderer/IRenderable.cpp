@@ -1,15 +1,21 @@
 #include "IRenderable.h"
 #include "Renderer.h"
 
-IRenderable::IRenderable(bool toRegister)
+IRenderable::IRenderable(bool toRender)
 {
-	if(toRegister)
+	if(toRender)
 		Renderer::getInstance()->RegisterRenderable(this);
 }
 
-IRenderable::IRenderable(Mesh* mesh, Material* material, bool toRegister) : mesh_(mesh), material_(material)
+IRenderable::IRenderable(Mesh* mesh, Material* material, bool toRender) : mesh_(mesh), material_(material)
 {
-	if(toRegister)
+	if(toRender)
+		Renderer::getInstance()->RegisterRenderable(this);
+}
+
+IRenderable::IRenderable(Mesh* mesh, Texture* texture, bool toRender):  mesh_(mesh), texture_(texture)
+{
+	if (toRender)
 		Renderer::getInstance()->RegisterRenderable(this);
 }
 
