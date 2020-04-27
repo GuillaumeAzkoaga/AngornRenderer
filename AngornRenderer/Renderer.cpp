@@ -82,11 +82,6 @@ void Renderer::Initialize()
 	glDepthFunc(GL_LESS);
 	glEnable(GL_CULL_FACE);
 
-
-	for (IRenderable* renderable : renderables_)
-	{
-		renderable->Initialize();
-	}
 	//Initialize render passes
 	GeometryPass_ = new GeometryPass();
 	LightPass_ = new LightPass();
@@ -143,6 +138,13 @@ std::vector<IRenderable*> Renderer::getRenderables() const
 void Renderer::RegisterRenderable(IRenderable* object) 
 { 
 	renderables_.push_back(object); 
+}
+
+void Renderer::UnregisterRenderable(IRenderable* object)
+{
+	std::vector<IRenderable* >::iterator pos = std::find(renderables_.begin(), renderables_.end(), object);
+	if (pos != renderables_.end())
+		renderables_.erase(pos);
 }
 
 void Renderer::RegisterBuffer(const std::string bufferName, GBuffer* gbuffer)

@@ -12,7 +12,6 @@ public:
 	const GLuint getTexture() const { return textureID_; }
 
 private:
-	void LoadTexture();
 	GLuint textureID_;
 
 	std::string textureFileName_;

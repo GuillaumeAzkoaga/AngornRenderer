@@ -10,7 +10,7 @@ public:
 	OutputRenderable() : IRenderable(false)
 	{
 		mesh_ =  ResourceLoader::getInstance()->getMesh("../Meshes/plane.obj");
-		Initialize();
+		GenerateAndBindBuffers();
 	}
 };
 

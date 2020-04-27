@@ -1,25 +1,32 @@
 #include "IRenderable.h"
 #include "Renderer.h"
 
-IRenderable::IRenderable(bool toRender)
+IRenderable::IRenderable(bool toRender) : isRendered_(toRender)
 {
-	if(toRender)
+	if(isRendered_)
 		Renderer::getInstance()->RegisterRenderable(this);
 }
 
-IRenderable::IRenderable(Mesh* mesh, Material* material, bool toRender) : mesh_(mesh), material_(material)
+IRenderable::IRenderable(Mesh* mesh, Material* material, bool toRender) : mesh_(mesh), material_(material), isRendered_(toRender)
 {
-	if(toRender)
+	if(isRendered_)
 		Renderer::getInstance()->RegisterRenderable(this);
 }
 
-IRenderable::IRenderable(Mesh* mesh, Texture* texture, bool toRender):  mesh_(mesh), texture_(texture)
+IRenderable::IRenderable(Mesh* mesh, Texture* texture, bool toRender):  mesh_(mesh), texture_(texture), isRendered_(toRender)
 {
-	if (toRender)
+	if (isRendered_)
 		Renderer::getInstance()->RegisterRenderable(this);
 }
 
-void IRenderable::Initialize()
+IRenderable::~IRenderable()
+{
+	DeleteBuffers();
+	if(isRendered_)
+		Renderer::getInstance()->UnregisterRenderable(this);
+}
+
+void IRenderable::GenerateAndBindBuffers()
 {
 	glGenVertexArrays(1, &vertexArrayObject_);
 	glGenBuffers(1, &vertexBuffer_);
@@ -82,7 +89,7 @@ void IRenderable::Render(GLenum renderMode, bool renderWireframe)
 		glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 }
 
-void IRenderable::Shutdown()
+void IRenderable::DeleteBuffers()
 {
 	glDeleteBuffers(1, &vertexBuffer_);
 	glDeleteBuffers(1, &normalBuffer_);

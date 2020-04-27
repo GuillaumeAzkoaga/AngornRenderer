@@ -9,6 +9,6 @@ int WINAPI WinMain(HINSTANCE instance, HINSTANCE hPreviousInstance, LPSTR, int s
 
 	Application::getInstance()->RunApplication(instance, show, 1280, 720, "AngornRenderer");
 
-
 	return 0;
 }
+

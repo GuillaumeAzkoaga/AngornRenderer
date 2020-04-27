@@ -14,9 +14,9 @@
 class IRenderable
 {
 public:			
-	void Initialize();
+	void GenerateAndBindBuffers();
 	void Render(GLenum renderMode = GL_TRIANGLES, bool renderWireframe = false);
-	void Shutdown();	
+	void DeleteBuffers();	
 	
 	const glm::mat4 getModelMatrix() const 
 	{ 
@@ -32,6 +32,7 @@ protected:
 	IRenderable(bool toRender = true);
 	IRenderable(Mesh* mesh, Material* material, bool toRender = true);
 	IRenderable(Mesh* mesh, Texture* texture, bool toRender = true);
+	~IRenderable();
 
 	glm::vec3 position_ = glm::vec3();
 	glm::vec3 scale_ = glm::vec3();
@@ -46,5 +47,7 @@ private:
 	GLuint normalBuffer_ = 0;
 	GLuint textCoordBuffer_ = 0;
 	GLuint indexBuffer_ = 0;
+
+	bool isRendered_;
 };
 #endif

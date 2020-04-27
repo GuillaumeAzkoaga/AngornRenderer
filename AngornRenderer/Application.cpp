@@ -29,11 +29,9 @@ void Application::Initialize()
 	RenderView::getInstance()->Initialize();	
 	InputManager::getInstance()->Initialize();	
 	Camera::getInstance()->Initialize();
-
-	CreateScene();
 	Renderer::getInstance()->Initialize();
 
-	
+	CreateScene();
 }
 
 void Application::Update(float dt)
@@ -71,8 +69,10 @@ void Application::CreateScene()
 	Camera::getInstance()->CreateCamera(glm::vec3(-1000.f, 0.0f, 0.0f));
 
 	DEBUG_OBJECT = new Ball(glm::vec3(0, 0, 0), glm::vec3(200), glm::angleAxis(0.0f, glm::vec3(1, 0, 0)), ResourceLoader::getInstance()->getMaterial(MATERIAL_TYPE::MAT_RUBY));
-	Texture* test = ResourceLoader::getInstance()->getTexture("Earth", "..//Textures//container.jpg");
-	DEBUG_OBJECT_TEXTURES = new Ball(glm::vec3(0, 0, -500), glm::vec3(100), glm::angleAxis(0.0f, glm::vec3(1, 0, 0)), test/*ResourceLoader::getInstance()->getMaterial(MATERIAL_TYPE::MAT_RUBY)*/);
+	DEBUG_OBJECT->GenerateAndBindBuffers();
+
+	Texture* test = ResourceLoader::getInstance()->getTexture("Earth", "../Textures/img_test.DDS");
+	//DEBUG_OBJECT_TEXTURES = new Ball(glm::vec3(0, 0, -500), glm::vec3(100), glm::angleAxis(0.0f, glm::vec3(1, 0, 0)), test/*ResourceLoader::getInstance()->getMaterial(MATERIAL_TYPE::MAT_RUBY)*/);
 
 	DEBUG_LIGHTS.push_back(new Light(glm::vec3(0, 500, 0), glm::vec3(1)));
 }

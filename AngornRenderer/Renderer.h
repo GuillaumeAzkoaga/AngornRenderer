@@ -41,6 +41,7 @@ public:
 
 	std::vector<IRenderable*> getRenderables() const;
 	void RegisterRenderable(IRenderable* object);
+	void UnregisterRenderable(IRenderable* object);
 
 	void RegisterBuffer(const std::string bufferName, GBuffer* gbuffer);
 	GBuffer* getBuffer(const std::string bufferName) const;
@@ -54,7 +55,7 @@ private:
 	HDC deviceContext_ = 0;
 	HGLRC renderContext_ = 0;
 
-	int glMajorVersion_ = 4;
+	int glMajorVersion_ = 3;
 	int glMinorVersion_ = 0;
 
 	std::map<std::string, Shader*> shaders_;

@@ -1876,10 +1876,7 @@ int query_NPOT_capability( void )
 	if( has_NPOT_capability == SOIL_CAPABILITY_UNKNOWN )
 	{
 		/*	we haven't yet checked for the capability, do so	*/
-		if(
-			(NULL == strstr( (char const*)glGetString( GL_EXTENSIONS ),
-				"GL_ARB_texture_non_power_of_two" ) )
-			)
+		if((NULL == strstr( (char const*)glGetString( GL_EXTENSIONS ),	"GL_ARB_texture_non_power_of_two" ) ))
 		{
 			/*	not there, flag the failure	*/
 			has_NPOT_capability = SOIL_CAPABILITY_NONE;
@@ -1953,7 +1950,7 @@ int query_DXT_capability( void )
 	/*	check for the capability	*/
 	if( has_DXT_capability == SOIL_CAPABILITY_UNKNOWN )
 	{
-		/*	we haven't yet checked for the capability, do so	*/
+		//	we haven't yet checked for the capability, do so	*/
 		if( NULL == strstr(
 				(char const*)glGetString( GL_EXTENSIONS ),
 				"GL_EXT_texture_compression_s3tc" ) )

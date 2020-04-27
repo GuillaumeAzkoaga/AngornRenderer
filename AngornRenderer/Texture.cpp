@@ -1,7 +1,7 @@
 #include "Texture.h"
 #include "RenderView.h"
-#include "stb_image.h"
 
+#include "SOIL/SOIL.h"
 #include <fstream>
 
 Texture::Texture(std::string textureName, std::string textureDiffuse, std::string textureSpecular, std::string textureAmbient) : textureName_(textureName)
@@ -13,32 +13,59 @@ Texture::Texture(std::string textureName, std::string textureDiffuse, std::strin
 }
 
 TextureChannel::TextureChannel(std::string textureFile) : textureFileName_(textureFile)
-{
-	glGenTextures(1, &textureID_);
-	glBindTexture(GL_TEXTURE_2D, textureID_);
-	// set the texture wrapping/filtering options (on the currently bound texture object)
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	// load and generate the texture
-	int width, height, nrChannels;
-	unsigned char* data = stbi_load(textureFileName_.c_str(), &width, &height, &nrChannels, 0);
-	if (data)
-	{
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, data);
-		//glGenerateMipmap(GL_TEXTURE_2D);
-	}
-	else
-	{
-		MessageBox(RenderView::getInstance()->getHandle(), ("Failed to load texture from file " + textureFileName_ + ".").c_str(), "Texture Load Error", MB_TASKMODAL | MB_SETFOREGROUND | MB_ICONERROR);
-	}
-	stbi_image_free(data);
-}
+{	
+	unsigned int length_ = 0;
+	char* imgBuffer_ = 0;
+	std::ifstream is(textureFileName_.c_str(), std::ifstream::binary);
 
-void TextureChannel::LoadTexture()
-{
-	
+	if (is)
+	{
+		// get length of file:
+		is.seekg(0, is.end);
+		length_ = int(is.tellg());
+		is.seekg(0, is.beg);
 
-	
+		imgBuffer_ = new char[length_];
+
+		// read data as a block:
+		is.read(imgBuffer_, length_);
+
+		if (!is)
+		{
+			char str[100];
+			sprintf_s(str, "Could not load the texture: %s", textureFileName_);
+			MessageBoxA(NULL, str, "Texture Load Error", MB_TASKMODAL | MB_SETFOREGROUND | MB_ICONERROR);
+			is.close();
+			return;
+		}
+		// Close file
+		is.close();
+	}
+
+	// Give texture to OpenGL
+	textureID_ = SOIL_load_OGL_texture_from_memory((unsigned char*)imgBuffer_,
+		length_ * sizeof(char),
+		SOIL_LOAD_AUTO,
+		SOIL_CREATE_NEW_ID,
+		/*SOIL_FLAG_GL_MIPMAPS*/  SOIL_FLAG_DDS_LOAD_DIRECT);
+	// Check if the texture was loaded correctly
+	if (0 == textureID_)
+	{
+		char str[100];
+		sprintf_s(str, "Could not load the texture: %s", textureFileName_);
+		MessageBoxA(NULL, str, "Texture Load Error", MB_TASKMODAL | MB_SETFOREGROUND | MB_ICONERROR);
+		return;
+	}
+
+	// "Bind" the newly created texture : all future texture functions will modify this texture
+	//glBindTexture(GL_TEXTURE_2D, textureID_);
+
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+	//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+
+
+	//glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	//glTexParameterf(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+
+	//MessageBox(RenderView::getInstance()->getHandle(), ("Failed to load texture from file " + textureFileName_ + ".").c_str(), "Texture Load Error", MB_TASKMODAL | MB_SETFOREGROUND | MB_ICONERROR);
 }

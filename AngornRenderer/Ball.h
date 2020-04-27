@@ -13,7 +13,7 @@ public:
 		material_ = material;
 		position_ = position;
 		scale_ = scale;
-		rotation_ = rotation;
+		rotation_ = rotation;		
 	}
 
 	Ball(glm::vec3 position, glm::vec3 scale, glm::quat rotation, Texture* texture)
