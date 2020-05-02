@@ -44,6 +44,9 @@ void GeometryPass::Apply()
 		if (renderable == nullptr)
 			continue;
 
+		if(!renderable->getStatus())
+			MessageBox(RenderView::getInstance()->getHandle(), "Buffer generation incorrect or missing, object will not be rendered.", "Non valid renderable object", MB_ICONERROR);
+
 		//Mesh uniforms
 		program_->setUniform("model", renderable->getModelMatrix());
 			
@@ -53,35 +56,14 @@ void GeometryPass::Apply()
 		program_->setUniform("uTessLevelsInner", 10.0f);
 		program_->setUniform("slope", -0.00001f);
 		program_->setUniform("m", 0.4f);
-		program_->setUniform("useAdaptive", 0);
+		program_->setUniform("useAdaptive", 0);		
+
+		//Material uniforms
+		const Material* material = renderable->getMaterial();			
+		program_->setUniform("materialDiffuse", material->getDiffuseColor());
+		program_->setUniform("materialSpecular", material->getSpecularColor());
+		program_->setUniform("materialAmbient", material->getAmbientColor());
 		
-		//Texture uniforms
-		const Texture* texture = renderable->getTexture();
-		if (texture)
-		{
-			program_->setUniform("hasTextures", 1);
-			glActiveTexture(GL_TEXTURE0);
-			glBindTexture(GL_TEXTURE_2D, texture->getDiffuseTexture());
-			program_->setUniform("textureDiffuse", 0);
-
-			glActiveTexture(GL_TEXTURE1);
-			glBindTexture(GL_TEXTURE_2D, texture->getSpecularTexture());
-			program_->setUniform("textureSpecular", 1);
-
-			glActiveTexture(GL_TEXTURE2);
-			glBindTexture(GL_TEXTURE_2D, texture->getAmbientTexture());
-			program_->setUniform("textureAmbient", 2);
-		}
-		else
-		{
-			program_->setUniform("hasTextures", 0);
-
-			//Material uniforms
-			const Material* material = renderable->getMaterial();			
-			program_->setUniform("materialDiffuse", material->getDiffuseColor());
-			program_->setUniform("materialSpecular", material->getSpecularColor());
-			program_->setUniform("materialAmbient", material->getAmbientColor());
-		}	
 
 		glPatchParameteri(GL_PATCH_VERTICES, 3);
 		renderable->Render(GL_PATCHES, false);

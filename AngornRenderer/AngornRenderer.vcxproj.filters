@@ -117,9 +117,6 @@
     <ClCompile Include="FrameRateController.cpp">
       <Filter>Source Files\Window</Filter>
     </ClCompile>
-    <ClCompile Include="Texture.cpp">
-      <Filter>Source Files\Objects\ObjectData</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="RenderView.h">
@@ -194,8 +191,8 @@
     <ClInclude Include="FrameRateController.h">
       <Filter>Source Files\Window</Filter>
     </ClInclude>
-    <ClInclude Include="Texture.h">
-      <Filter>Source Files\Objects\ObjectData</Filter>
+    <ClInclude Include="CustomObject.h">
+      <Filter>Source Files\Objects\ObjectsType</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

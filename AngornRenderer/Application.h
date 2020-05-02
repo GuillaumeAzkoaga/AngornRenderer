@@ -3,6 +3,7 @@
 
 #include "ISystem.h"
 #include "Ball.h"
+#include "CustomObject.h"
 #include "Light.h"
 
 #include <Windows.h>
@@ -33,7 +34,7 @@ private:
 	void CreateScene();
 
 	Ball* DEBUG_OBJECT = nullptr;
-	Ball* DEBUG_OBJECT_TEXTURES = nullptr;
+	CustomObject* DEBUG_OBJECT2 = nullptr;
 
 	std::vector<Light*> DEBUG_LIGHTS;
 

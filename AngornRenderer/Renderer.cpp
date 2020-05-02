@@ -75,8 +75,9 @@ void Renderer::Initialize()
 	glViewport(0, 0, RenderView::getInstance()->getWidth(), RenderView::getInstance()->getHeight());
 
 	wglSwapIntervalEXT(1);
-	glEnable(GL_DEBUG_OUTPUT);
-	glDebugMessageCallback(MessageCallback, 0);
+
+	glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
+	glDebugMessageCallback(MessageCallback, nullptr);
 
 	glEnable(GL_DEPTH_TEST);
 	glDepthFunc(GL_LESS);

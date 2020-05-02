@@ -14,7 +14,8 @@ void GBuffer::Initialize(const unsigned int windowWidth, const unsigned int wind
 	//Create the GBuffer textures
 	textureList_.resize(textureAmount);
 	glGenTextures(textureAmount, textureList_.data());
-	if(isUsingDepth_)
+	//TODO: do we generate depthTexture if we are not using depth?
+	//if(isUsingDepth_)
 		glGenTextures(1, &depthTexture_);
 
 	for (unsigned int i = 0; i < textureAmount; i++)

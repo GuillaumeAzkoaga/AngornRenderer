@@ -55,7 +55,7 @@ private:
 	HDC deviceContext_ = 0;
 	HGLRC renderContext_ = 0;
 
-	int glMajorVersion_ = 3;
+	int glMajorVersion_ = 4;
 	int glMinorVersion_ = 0;
 
 	std::map<std::string, Shader*> shaders_;

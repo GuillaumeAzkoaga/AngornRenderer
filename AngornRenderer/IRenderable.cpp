@@ -13,12 +13,6 @@ IRenderable::IRenderable(Mesh* mesh, Material* material, bool toRender) : mesh_(
 		Renderer::getInstance()->RegisterRenderable(this);
 }
 
-IRenderable::IRenderable(Mesh* mesh, Texture* texture, bool toRender):  mesh_(mesh), texture_(texture), isRendered_(toRender)
-{
-	if (isRendered_)
-		Renderer::getInstance()->RegisterRenderable(this);
-}
-
 IRenderable::~IRenderable()
 {
 	DeleteBuffers();
@@ -74,6 +68,8 @@ void IRenderable::GenerateAndBindBuffers()
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, indexBuffer_);
 		glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices.size() * sizeof(unsigned short), &indices[0], GL_STATIC_DRAW);
 	}
+
+	isBufferGenerated_ = true;
 }
 
 void IRenderable::Render(GLenum renderMode, bool renderWireframe)
