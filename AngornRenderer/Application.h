@@ -2,9 +2,7 @@
 #define APPLICATION_H
 
 #include "ISystem.h"
-#include "Ball.h"
-#include "CustomObject.h"
-#include "Light.h"
+#include "Scene.h"
 
 #include <Windows.h>
 
@@ -21,8 +19,7 @@ public:
 	void RunApplication(HINSTANCE hinstance, int show, int WindowWidth, int WindowHeight, const char * WindowTitle);
 	void ExitApplication();
 	
-	//TODO: This should be handled by scene class
-	const std::vector<Light*> getLights() const {return DEBUG_LIGHTS;}
+	const Scene* getCurrentScene() const { return currentScene_; } 
 
 private:
 	Application(){}	
@@ -30,14 +27,9 @@ private:
 	void Initialize();
 	void Update(float dt = 0);
 	void Shutdown();
-
-	void CreateScene();
-
-	Ball* DEBUG_OBJECT = nullptr;
-	CustomObject* DEBUG_OBJECT2 = nullptr;
-
-	std::vector<Light*> DEBUG_LIGHTS;
-
+	
+	
+	Scene* currentScene_ = nullptr;
 	static Application* instance_;
 	bool isRunning_ = true;
 };

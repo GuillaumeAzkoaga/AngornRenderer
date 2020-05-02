@@ -53,7 +53,7 @@ void LightPass::Apply()
 	
 	glDisable(GL_DEPTH_TEST);
 	//Get lights data
-	const std::vector<Light*> lights = Application::getInstance()->getLights();
+	const std::vector<Light*> lights = Application::getInstance()->getCurrentScene()->getLights();
 	unsigned index = 0;
 	for (Light* light : lights)
 	{

@@ -35,6 +35,7 @@
     <ClCompile Include="RenderPass.cpp" />
     <ClCompile Include="RenderView.cpp" />
     <ClCompile Include="ResourceLoader.cpp" />
+    <ClCompile Include="Scene.cpp" />
     <ClCompile Include="Shader.cpp" />
     <ClCompile Include="ShaderProgram.cpp" />
     <ClCompile Include="tiny_obj_loader.cpp" />
@@ -62,6 +63,7 @@
     <ClInclude Include="RenderPass.h" />
     <ClInclude Include="RenderView.h" />
     <ClInclude Include="ResourceLoader.h" />
+    <ClInclude Include="Scene.h" />
     <ClInclude Include="Shader.h" />
     <ClInclude Include="ShaderProgram.h" />
     <ClInclude Include="tiny_obj_loader.h" />
