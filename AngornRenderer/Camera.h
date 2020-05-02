@@ -21,7 +21,7 @@ public:
 		return instance_;
 	}
 
-	void CreateCamera(glm::vec3 pos, float nearPlane = 1.0f, float farPlane_ = 15000.0f, float FOV_ = 45.f);
+	void CreateCamera(glm::vec3 pos = glm::vec3(-500,0,0), float nearPlane = 1.0f, float farPlane_ = 15000.0f, float FOV_ = 45.f);
 	
 	void Initialize() {}
 	void Update(float dt = 0);

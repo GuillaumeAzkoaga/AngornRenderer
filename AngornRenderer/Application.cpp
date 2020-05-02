@@ -47,7 +47,9 @@ void Application::Update(float dt)
 		Renderer::getInstance()->Update(dt);
 
 		if (InputManager::getInstance()->KeyIsTriggered(VK_ESCAPE))
-			isRunning_ = false;	
+			isRunning_ = false;
+		else if (InputManager::getInstance()->KeyIsTriggered(VK_SPACE))
+			currentScene_->ChangeScene("../Data/Scenes/Default2.json");
 
 		FrameRateController::getInstance()->EndFrame();
 	}
