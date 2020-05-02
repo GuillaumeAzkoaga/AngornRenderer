@@ -4,27 +4,32 @@
 #include "CustomObject.h"
 #include "Ball.h"
 #include "Light.h"
+#include "Renderer.h"
+//TODO export current scene to json
 
 class Scene 
 {
 public:
-	Scene() {
-		LoadSceneFromJson();
-	}
-
-	Scene(std::string sceneJson) {
-		LoadSceneFromJson(sceneJson);
+	Scene(std::string jsonFile) {
+		LoadSceneFromJson(jsonFile);
 	}
 
 	const std::vector<Light*> getLights() const { return lights_; }
 
-	void ChangeScene(std::string sceneJson);
+	const void UnregisterRenderables() {
+		for (IRenderable* obj : objects_)
+			Renderer::getInstance()->UnregisterRenderable(obj);
+	}
+	const void RegisterRenderables() {
+		for (IRenderable* obj : objects_)
+			Renderer::getInstance()->RegisterRenderable(obj);
+	}
+	void ReloadCamera() const;
 private:	
-	void LoadSceneFromJson(std::string jsonFile = "../Data/Scenes/Default.json");
+	void LoadSceneFromJson(std::string jsonFile);
 	std::vector<Light*> lights_;
 	std::vector<IRenderable*> objects_;
 
-	std::string currentScene = "";
-	std::string previousScene = "";
+	std::string name_;
 };
 #endif

@@ -31,7 +31,7 @@ void Scene::LoadSceneFromJson(std::string jsonFile)
 
 		//Load objects
 		const Json::Value objects = root["Objects"];
-		for (int i = 0; i < objects.size(); ++i)
+		for (unsigned i = 0; i < objects.size(); ++i)
 		{
 			Mesh* mesh = ResourceLoader::getInstance()->getMesh(objects[i].get("mesh", "../Data/Meshes/sphere_8_4.obj").asString());
 
@@ -51,7 +51,6 @@ void Scene::LoadSceneFromJson(std::string jsonFile)
 		for (IRenderable* obj : objects_)
 			obj->GenerateAndBindBuffers();
 
-
 		//Load Lights
 		const Json::Value lights = root["Lights"];
 		if (lights.size() == 0)
@@ -59,15 +58,15 @@ void Scene::LoadSceneFromJson(std::string jsonFile)
 			lights_.push_back(new Light());
 		}
 		else {
-			for (int i = 0; i < lights.size(); ++i)
+			for (unsigned i = 0; i < lights.size(); ++i)
 			{
 				glm::vec3 position = glm::vec3(lights[i]["position"].get("x", 0.f).asFloat(), lights[i]["position"].get("y", 0.f).asFloat(), lights[i]["position"].get("z", 0.f).asFloat());
 				glm::vec3 color = glm::vec3(lights[i]["color"].get("r", 1.f).asFloat(), lights[i]["color"].get("g", 1.f).asFloat(), lights[i]["color"].get("b", 1.f).asFloat());
 				lights_.push_back(new Light(position, color));
 			}			
 		}
-		previousScene = currentScene;
-		currentScene = jsonFile;
+
+		name_ = jsonFile;
 	}
 	catch (std::exception& e)
 	{
@@ -76,14 +75,29 @@ void Scene::LoadSceneFromJson(std::string jsonFile)
 	
 }
 
-void Scene::ChangeScene(std::string sceneJson)
-{
-	for (IRenderable* obj : objects_)
-	{
-		Renderer::getInstance()->UnregisterRenderable(obj);
-	}
-	objects_.clear();
-	lights_.clear();
 
-	LoadSceneFromJson(sceneJson);
+void Scene::ReloadCamera() const
+{
+	try {
+		std::ifstream scene(name_, std::ifstream::binary);
+		Json::Value root;   // starts as "null"; will contain the root value after parsing
+		scene >> root;
+
+		//Load Camera
+		const Json::Value camera = root["Camera"];
+		if (camera.size() == 0)
+		{
+			Camera::getInstance()->CreateCamera();
+		}
+		else {
+			glm::vec3 position = glm::vec3(camera["position"].get("x", 0.f).asFloat(), camera["position"].get("y", 0.f).asFloat(), camera["position"].get("z", 0.f).asFloat());
+			Camera::getInstance()->CreateCamera(position);
+		}
+	}
+	catch (std::exception& e)
+	{
+		MessageBox(RenderView::getInstance()->getHandle(), ("Could not load scene from " + name_ + e.what()).c_str(), "Scene import error", MB_ICONERROR);
+	}
+
+	
 }

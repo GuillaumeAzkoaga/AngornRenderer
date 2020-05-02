@@ -5,6 +5,7 @@
 #include "Camera.h"
 #include "ResourceLoader.h"
 #include "FrameRateController.h"
+#include "SceneManager.h"
 
 Application* Application::instance_ = 0;
 
@@ -31,7 +32,7 @@ void Application::Initialize()
 	Camera::getInstance()->Initialize();
 	Renderer::getInstance()->Initialize();
 
-	currentScene_ = new Scene();
+	SceneManager::getInstance()->SetScene("../Data/Scenes/Default.json");
 }
 
 void Application::Update(float dt)
@@ -42,14 +43,19 @@ void Application::Update(float dt)
 
 		dt = static_cast<float>(FrameRateController::getInstance()->getCurrentFrameTime());
 		InputManager::getInstance()->Update(dt);
+
+		if (InputManager::getInstance()->KeyIsTriggered(VK_ESCAPE))
+			isRunning_ = false;
+		else if (InputManager::getInstance()->KeyIsTriggered(VK_NUMPAD1))
+			SceneManager::getInstance()->SetScene("../Data/Scenes/Default.json");
+		else if (InputManager::getInstance()->KeyIsTriggered(VK_NUMPAD2))
+			SceneManager::getInstance()->SetScene("../Data/Scenes/Default2.json");
+
 		RenderView::getInstance()->Update(dt);
 		Camera::getInstance()->Update(dt);
 		Renderer::getInstance()->Update(dt);
 
-		if (InputManager::getInstance()->KeyIsTriggered(VK_ESCAPE))
-			isRunning_ = false;
-		else if (InputManager::getInstance()->KeyIsTriggered(VK_SPACE))
-			currentScene_->ChangeScene("../Data/Scenes/Default2.json");
+	
 
 		FrameRateController::getInstance()->EndFrame();
 	}
