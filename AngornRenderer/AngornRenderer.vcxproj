@@ -19,56 +19,88 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Application.cpp" />
-    <ClCompile Include="Camera.cpp" />
-    <ClCompile Include="FrameRateController.cpp" />
-    <ClCompile Include="GBuffer.cpp" />
-    <ClCompile Include="GeometryPass.cpp" />
-    <ClCompile Include="InputManager.cpp" />
-    <ClCompile Include="IRenderable.cpp" />
-    <ClCompile Include="LightPass.cpp" />
-    <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Material.cpp" />
-    <ClCompile Include="Mesh.cpp" />
-    <ClCompile Include="Renderer.cpp" />
-    <ClCompile Include="RenderingUtils.cpp" />
-    <ClCompile Include="RenderPass.cpp" />
-    <ClCompile Include="RenderView.cpp" />
-    <ClCompile Include="ResourceLoader.cpp" />
-    <ClCompile Include="Scene.cpp" />
-    <ClCompile Include="SceneManager.cpp" />
-    <ClCompile Include="Shader.cpp" />
-    <ClCompile Include="ShaderProgram.cpp" />
-    <ClCompile Include="tiny_obj_loader.cpp" />
+    <ClCompile Include="..\include\Discord\achievement_manager.cpp" />
+    <ClCompile Include="..\include\Discord\activity_manager.cpp" />
+    <ClCompile Include="..\include\Discord\application_manager.cpp" />
+    <ClCompile Include="..\include\Discord\core.cpp" />
+    <ClCompile Include="..\include\Discord\image_manager.cpp" />
+    <ClCompile Include="..\include\Discord\lobby_manager.cpp" />
+    <ClCompile Include="..\include\Discord\network_manager.cpp" />
+    <ClCompile Include="..\include\Discord\overlay_manager.cpp" />
+    <ClCompile Include="..\include\Discord\relationship_manager.cpp" />
+    <ClCompile Include="..\include\Discord\storage_manager.cpp" />
+    <ClCompile Include="..\include\Discord\store_manager.cpp" />
+    <ClCompile Include="..\include\Discord\types.cpp" />
+    <ClCompile Include="..\include\Discord\user_manager.cpp" />
+    <ClCompile Include="..\include\Discord\voice_manager.cpp" />
+    <ClCompile Include="..\src\Application.cpp" />
+    <ClCompile Include="..\src\Camera.cpp" />
+    <ClCompile Include="..\src\DiscordRichPresence.cpp" />
+    <ClCompile Include="..\src\FrameRateController.cpp" />
+    <ClCompile Include="..\src\GBuffer.cpp" />
+    <ClCompile Include="..\src\GeometryPass.cpp" />
+    <ClCompile Include="..\src\InputManager.cpp" />
+    <ClCompile Include="..\src\IRenderable.cpp" />
+    <ClCompile Include="..\src\LightPass.cpp" />
+    <ClCompile Include="..\src\Main.cpp" />
+    <ClCompile Include="..\src\Material.cpp" />
+    <ClCompile Include="..\src\Mesh.cpp" />
+    <ClCompile Include="..\src\Renderer.cpp" />
+    <ClCompile Include="..\src\RenderingUtils.cpp" />
+    <ClCompile Include="..\src\RenderPass.cpp" />
+    <ClCompile Include="..\src\RenderView.cpp" />
+    <ClCompile Include="..\src\ResourceLoader.cpp" />
+    <ClCompile Include="..\src\Scene.cpp" />
+    <ClCompile Include="..\src\SceneManager.cpp" />
+    <ClCompile Include="..\src\Shader.cpp" />
+    <ClCompile Include="..\src\ShaderProgram.cpp" />
+    <ClCompile Include="..\src\tiny_obj_loader.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Application.h" />
-    <ClInclude Include="Ball.h" />
-    <ClInclude Include="Camera.h" />
-    <ClInclude Include="CustomObject.h" />
-    <ClInclude Include="FrameRateController.h" />
-    <ClInclude Include="GBuffer.h" />
-    <ClInclude Include="GeometryPass.h" />
-    <ClInclude Include="InputManager.h" />
-    <ClInclude Include="IRenderable.h" />
-    <ClInclude Include="ISystem.h" />
-    <ClInclude Include="Light.h" />
-    <ClInclude Include="LightPass.h" />
-    <ClInclude Include="Material.h" />
-    <ClInclude Include="MathUtils.h" />
-    <ClInclude Include="Mesh.h" />
-    <ClInclude Include="OutputRenderable.h" />
-    <ClInclude Include="Renderer.h" />
-    <ClInclude Include="RenderingUtils.h" />
-    <ClInclude Include="IRenderPass.h" />
-    <ClInclude Include="RenderPass.h" />
-    <ClInclude Include="RenderView.h" />
-    <ClInclude Include="ResourceLoader.h" />
-    <ClInclude Include="Scene.h" />
-    <ClInclude Include="SceneManager.h" />
-    <ClInclude Include="Shader.h" />
-    <ClInclude Include="ShaderProgram.h" />
-    <ClInclude Include="tiny_obj_loader.h" />
+    <ClInclude Include="..\include\Discord\achievement_manager.h" />
+    <ClInclude Include="..\include\Discord\activity_manager.h" />
+    <ClInclude Include="..\include\Discord\application_manager.h" />
+    <ClInclude Include="..\include\Discord\core.h" />
+    <ClInclude Include="..\include\Discord\discord.h" />
+    <ClInclude Include="..\include\Discord\event.h" />
+    <ClInclude Include="..\include\Discord\ffi.h" />
+    <ClInclude Include="..\include\Discord\image_manager.h" />
+    <ClInclude Include="..\include\Discord\lobby_manager.h" />
+    <ClInclude Include="..\include\Discord\network_manager.h" />
+    <ClInclude Include="..\include\Discord\overlay_manager.h" />
+    <ClInclude Include="..\include\Discord\relationship_manager.h" />
+    <ClInclude Include="..\include\Discord\storage_manager.h" />
+    <ClInclude Include="..\include\Discord\store_manager.h" />
+    <ClInclude Include="..\include\Discord\types.h" />
+    <ClInclude Include="..\include\Discord\user_manager.h" />
+    <ClInclude Include="..\src\Application.h" />
+    <ClInclude Include="..\src\Ball.h" />
+    <ClInclude Include="..\src\Camera.h" />
+    <ClInclude Include="..\src\CustomObject.h" />
+    <ClInclude Include="..\src\DiscordRichPresence.h" />
+    <ClInclude Include="..\src\FrameRateController.h" />
+    <ClInclude Include="..\src\GBuffer.h" />
+    <ClInclude Include="..\src\GeometryPass.h" />
+    <ClInclude Include="..\src\InputManager.h" />
+    <ClInclude Include="..\src\IRenderable.h" />
+    <ClInclude Include="..\src\IRenderPass.h" />
+    <ClInclude Include="..\src\ISystem.h" />
+    <ClInclude Include="..\src\Light.h" />
+    <ClInclude Include="..\src\LightPass.h" />
+    <ClInclude Include="..\src\Material.h" />
+    <ClInclude Include="..\src\MathUtils.h" />
+    <ClInclude Include="..\src\Mesh.h" />
+    <ClInclude Include="..\src\OutputRenderable.h" />
+    <ClInclude Include="..\src\Renderer.h" />
+    <ClInclude Include="..\src\RenderingUtils.h" />
+    <ClInclude Include="..\src\RenderPass.h" />
+    <ClInclude Include="..\src\RenderView.h" />
+    <ClInclude Include="..\src\ResourceLoader.h" />
+    <ClInclude Include="..\src\Scene.h" />
+    <ClInclude Include="..\src\SceneManager.h" />
+    <ClInclude Include="..\src\Shader.h" />
+    <ClInclude Include="..\src\ShaderProgram.h" />
+    <ClInclude Include="..\src\tiny_obj_loader.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Data\Scenes\Default.json">
@@ -280,7 +312,7 @@
       <ConformanceMode>true</ConformanceMode>
       <DisableSpecificWarnings>
       </DisableSpecificWarnings>
-      <AdditionalIncludeDirectories>..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\src;..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>..\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -314,7 +346,7 @@
       <ConformanceMode>true</ConformanceMode>
       <DisableSpecificWarnings>
       </DisableSpecificWarnings>
-      <AdditionalIncludeDirectories>..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\src;..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>

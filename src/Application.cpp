@@ -6,6 +6,7 @@
 #include "ResourceLoader.h"
 #include "FrameRateController.h"
 #include "SceneManager.h"
+#include "DiscordRichPresence.h"
 
 Application* Application::instance_ = 0;
 
@@ -31,8 +32,9 @@ void Application::Initialize()
 	InputManager::getInstance()->Initialize();	
 	Camera::getInstance()->Initialize();
 	Renderer::getInstance()->Initialize();
-
 	SceneManager::getInstance()->SetScene("../Data/Scenes/Default.json");
+
+	//DiscordRichPresence::getInstance()->Initialize();
 }
 
 void Application::Update(float dt)
@@ -55,7 +57,7 @@ void Application::Update(float dt)
 		Camera::getInstance()->Update(dt);
 		Renderer::getInstance()->Update(dt);
 
-	
+		//DiscordRichPresence::getInstance()->Update(dt);
 
 		FrameRateController::getInstance()->EndFrame();
 	}
@@ -63,6 +65,7 @@ void Application::Update(float dt)
 
 void Application::Shutdown()
 {		
+	//DiscordRichPresence::getInstance()->Shutdown();
 	Renderer::getInstance()->Shutdown();
 	Camera::getInstance()->Shutdown();
 	InputManager::getInstance()->Shutdown();
