@@ -4,7 +4,7 @@
 #include "RenderingUtils.h"
 #include "Camera.h"
 #include "Light.h"
-#include "Application.h"
+#include "SceneManager.h"
 
 LightPass::LightPass()
 {
@@ -52,8 +52,9 @@ void LightPass::Apply()
 	program_->setUniform("AmbientColorTexture", GeometryPass::TexturesOut::AmbientColor);
 	
 	glDisable(GL_DEPTH_TEST);
+	
 	//Get lights data
-	const std::vector<Light*> lights = Application::getInstance()->getLights();
+	const std::vector<Light*> lights = SceneManager::getInstance()->getCurrentScene()->getLights();
 	unsigned index = 0;
 	for (Light* light : lights)
 	{

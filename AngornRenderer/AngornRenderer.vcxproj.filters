@@ -58,6 +58,12 @@
     <Filter Include="Resource Files\Shaders">
       <UniqueIdentifier>{e25c5885-9545-4611-9539-a1cfdad4363c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Scene">
+      <UniqueIdentifier>{056a6274-fe2f-4f71-bcbc-8c7938018766}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\Scenes">
+      <UniqueIdentifier>{0c3ad6ff-fbb5-4f67-9a41-768d85aa6940}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="RenderView.cpp">
@@ -116,6 +122,12 @@
     </ClCompile>
     <ClCompile Include="FrameRateController.cpp">
       <Filter>Source Files\Window</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Source Files\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneManager.cpp">
+      <Filter>Source Files\Scene</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -194,6 +206,12 @@
     <ClInclude Include="CustomObject.h">
       <Filter>Source Files\Objects\ObjectsType</Filter>
     </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>Source Files\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>Source Files\Scene</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Shaders\edge_pass.frag">
@@ -225,6 +243,12 @@
     </None>
     <None Include="..\Shaders\tess_eval.sh">
       <Filter>Resource Files\Shaders</Filter>
+    </None>
+    <None Include="..\Data\Scenes\Default.json">
+      <Filter>Resource Files\Scenes</Filter>
+    </None>
+    <None Include="..\Data\Scenes\Default2.json">
+      <Filter>Resource Files\Scenes</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

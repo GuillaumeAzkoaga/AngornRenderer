@@ -7,16 +7,16 @@
 #include <gl/GLU.h>
 
 // Shader paths
-#define GEOMETRY_VERTEX_FILE			"../Shaders/geometry_pass.vert"
-#define GEOMETRY_FRAGMENT_FILE			"../Shaders/geometry_pass.frag"
-#define TESS_CONTROL_FILE				"../Shaders/tess_control.sh"
-#define TESS_EVAL_FILE					"../Shaders/tess_eval.sh"
-#define MULTILIGHTING_VERTEX_FILE		"../Shaders/multilighting_pass.vert"
-#define MULTILIGHTING_FRAGMENT_FILE		"../Shaders/multilighting_pass.frag"
-#define EDGE_DETECTION_VERTEX_FILE		"../Shaders/edge_pass.vert"
-#define EDGE_DETECTION_FRAGMENT_FILE	"../Shaders/edge_pass.frag"
-#define RENDER_VERTEX_FILE				"../Shaders/render.vert"
-#define RENDER_FRAGMENT_FILE			"../Shaders/render.frag"
+#define GEOMETRY_VERTEX_FILE			"../Data/Shaders/geometry_pass.vert"
+#define GEOMETRY_FRAGMENT_FILE			"../Data/Shaders/geometry_pass.frag"
+#define TESS_CONTROL_FILE				"../Data/Shaders/tess_control.sh"
+#define TESS_EVAL_FILE					"../Data/Shaders/tess_eval.sh"
+#define MULTILIGHTING_VERTEX_FILE		"../Data/Shaders/multilighting_pass.vert"
+#define MULTILIGHTING_FRAGMENT_FILE		"../Data/Shaders/multilighting_pass.frag"
+#define EDGE_DETECTION_VERTEX_FILE		"../Data/Shaders/edge_pass.vert"
+#define EDGE_DETECTION_FRAGMENT_FILE	"../Data/Shaders/edge_pass.frag"
+#define RENDER_VERTEX_FILE				"../Data/Shaders/render.vert"
+#define RENDER_FRAGMENT_FILE			"../Data/Shaders/render.frag"
 
 enum RenderMode
 {

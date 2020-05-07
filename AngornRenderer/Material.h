@@ -5,10 +5,9 @@
 
 enum class MATERIAL_TYPE
 {	
-	MAT_RUBY,
-	MAT_CHROME,
 	MAT_NORMAL,
-
+	MAT_CHROME,
+	MAT_RUBY,
 	MATERIAL_NUM
 };
 

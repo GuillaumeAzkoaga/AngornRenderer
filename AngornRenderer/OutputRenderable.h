@@ -9,7 +9,7 @@ class OutputRenderable : public IRenderable
 public:
 	OutputRenderable() : IRenderable(false)
 	{
-		mesh_ =  ResourceLoader::getInstance()->getMesh("../Meshes/plane.obj");
+		mesh_ =  ResourceLoader::getInstance()->getMesh("../Data/Meshes/plane.obj");
 		GenerateAndBindBuffers();
 	}
 };
