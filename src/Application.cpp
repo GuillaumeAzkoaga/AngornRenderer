@@ -34,7 +34,7 @@ void Application::Initialize()
 	Renderer::getInstance()->Initialize();
 	SceneManager::getInstance()->SetScene("../Data/Scenes/Default.json");
 
-	//DiscordRichPresence::getInstance()->Initialize();
+	DiscordRichPresence::getInstance()->Initialize();
 }
 
 void Application::Update(float dt)
@@ -57,7 +57,7 @@ void Application::Update(float dt)
 		Camera::getInstance()->Update(dt);
 		Renderer::getInstance()->Update(dt);
 
-		//DiscordRichPresence::getInstance()->Update(dt);
+		DiscordRichPresence::getInstance()->Update(dt);
 
 		FrameRateController::getInstance()->EndFrame();
 	}
@@ -65,7 +65,7 @@ void Application::Update(float dt)
 
 void Application::Shutdown()
 {		
-	//DiscordRichPresence::getInstance()->Shutdown();
+	DiscordRichPresence::getInstance()->Shutdown();
 	Renderer::getInstance()->Shutdown();
 	Camera::getInstance()->Shutdown();
 	InputManager::getInstance()->Shutdown();

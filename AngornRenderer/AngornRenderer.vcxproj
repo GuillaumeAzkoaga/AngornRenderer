@@ -73,6 +73,7 @@
     <ClInclude Include="..\include\Discord\store_manager.h" />
     <ClInclude Include="..\include\Discord\types.h" />
     <ClInclude Include="..\include\Discord\user_manager.h" />
+    <ClInclude Include="..\include\Discord\voice_manager.h" />
     <ClInclude Include="..\src\Application.h" />
     <ClInclude Include="..\src\Ball.h" />
     <ClInclude Include="..\src\Camera.h" />

@@ -87,6 +87,7 @@ enum class ActivityType {
     Streaming,
     Listening,
     Watching,
+    Test
 };
 
 enum class ActivityActionType {

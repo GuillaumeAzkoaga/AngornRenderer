@@ -1,10 +1,17 @@
 #ifndef DISCORD_H_
 #define DISCORD_H_
 #include <Discord/discord.h>
-
-/*
 #include "ISystem.h"
+
 #include <string>
+#include <thread>
+struct DiscordState {
+	discord::User currentUser;
+	std::unique_ptr<discord::Core> core;
+
+	discord::Activity activity;
+};
+
 
 class DiscordRichPresence : public ISystem
 {
@@ -22,11 +29,12 @@ public:
 
 private:
 	DiscordRichPresence() {}
-
 	static DiscordRichPresence* instance_;
 
-	//discord::Core* discordInstance_ = {};
-	//const DiscordClientId ApplicationId = 708010784780976219;
+	void UpdateActivity(const char* details, const char* state, discord::ActivityType type);
+
+	DiscordState discordState_{};
+	const DiscordClientId applicationId_ = 708010784780976219;
 };
-*/
+
 #endif

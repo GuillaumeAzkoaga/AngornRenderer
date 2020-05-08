@@ -67,8 +67,8 @@
     <Filter Include="Source Files\Objects\ObjectData\ObjectsType">
       <UniqueIdentifier>{463aab5b-be03-4718-afa8-ef89ab9736f1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Discord\NotMine">
-      <UniqueIdentifier>{cab94005-1d0c-4569-943f-caebed88ded9}</UniqueIdentifier>
+    <Filter Include="Source Files\Discord\SDK">
+      <UniqueIdentifier>{07dfda96-009c-4843-afbd-3494777197ed}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -139,46 +139,46 @@
       <Filter>Source Files\Scene</Filter>
     </ClCompile>
     <ClCompile Include="..\include\Discord\achievement_manager.cpp">
-      <Filter>Source Files\Discord\NotMine</Filter>
+      <Filter>Source Files\Discord\SDK</Filter>
     </ClCompile>
     <ClCompile Include="..\include\Discord\activity_manager.cpp">
-      <Filter>Source Files\Discord\NotMine</Filter>
+      <Filter>Source Files\Discord\SDK</Filter>
     </ClCompile>
     <ClCompile Include="..\include\Discord\application_manager.cpp">
-      <Filter>Source Files\Discord\NotMine</Filter>
+      <Filter>Source Files\Discord\SDK</Filter>
     </ClCompile>
     <ClCompile Include="..\include\Discord\core.cpp">
-      <Filter>Source Files\Discord\NotMine</Filter>
+      <Filter>Source Files\Discord\SDK</Filter>
     </ClCompile>
     <ClCompile Include="..\include\Discord\image_manager.cpp">
-      <Filter>Source Files\Discord\NotMine</Filter>
+      <Filter>Source Files\Discord\SDK</Filter>
     </ClCompile>
     <ClCompile Include="..\include\Discord\lobby_manager.cpp">
-      <Filter>Source Files\Discord\NotMine</Filter>
+      <Filter>Source Files\Discord\SDK</Filter>
     </ClCompile>
     <ClCompile Include="..\include\Discord\network_manager.cpp">
-      <Filter>Source Files\Discord\NotMine</Filter>
+      <Filter>Source Files\Discord\SDK</Filter>
     </ClCompile>
     <ClCompile Include="..\include\Discord\overlay_manager.cpp">
-      <Filter>Source Files\Discord\NotMine</Filter>
+      <Filter>Source Files\Discord\SDK</Filter>
     </ClCompile>
     <ClCompile Include="..\include\Discord\relationship_manager.cpp">
-      <Filter>Source Files\Discord\NotMine</Filter>
+      <Filter>Source Files\Discord\SDK</Filter>
     </ClCompile>
     <ClCompile Include="..\include\Discord\storage_manager.cpp">
-      <Filter>Source Files\Discord\NotMine</Filter>
+      <Filter>Source Files\Discord\SDK</Filter>
     </ClCompile>
     <ClCompile Include="..\include\Discord\store_manager.cpp">
-      <Filter>Source Files\Discord\NotMine</Filter>
+      <Filter>Source Files\Discord\SDK</Filter>
     </ClCompile>
     <ClCompile Include="..\include\Discord\types.cpp">
-      <Filter>Source Files\Discord\NotMine</Filter>
+      <Filter>Source Files\Discord\SDK</Filter>
     </ClCompile>
     <ClCompile Include="..\include\Discord\user_manager.cpp">
-      <Filter>Source Files\Discord\NotMine</Filter>
+      <Filter>Source Files\Discord\SDK</Filter>
     </ClCompile>
     <ClCompile Include="..\include\Discord\voice_manager.cpp">
-      <Filter>Source Files\Discord\NotMine</Filter>
+      <Filter>Source Files\Discord\SDK</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -267,52 +267,55 @@
       <Filter>Source Files\Scene</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Discord\achievement_manager.h">
-      <Filter>Source Files\Discord\NotMine</Filter>
+      <Filter>Source Files\Discord\SDK</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Discord\activity_manager.h">
-      <Filter>Source Files\Discord\NotMine</Filter>
+      <Filter>Source Files\Discord\SDK</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Discord\application_manager.h">
-      <Filter>Source Files\Discord\NotMine</Filter>
+      <Filter>Source Files\Discord\SDK</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Discord\core.h">
-      <Filter>Source Files\Discord\NotMine</Filter>
+      <Filter>Source Files\Discord\SDK</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Discord\discord.h">
-      <Filter>Source Files\Discord\NotMine</Filter>
+      <Filter>Source Files\Discord\SDK</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Discord\event.h">
-      <Filter>Source Files\Discord\NotMine</Filter>
+      <Filter>Source Files\Discord\SDK</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Discord\ffi.h">
-      <Filter>Source Files\Discord\NotMine</Filter>
+      <Filter>Source Files\Discord\SDK</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Discord\image_manager.h">
-      <Filter>Source Files\Discord\NotMine</Filter>
+      <Filter>Source Files\Discord\SDK</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Discord\lobby_manager.h">
-      <Filter>Source Files\Discord\NotMine</Filter>
+      <Filter>Source Files\Discord\SDK</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Discord\network_manager.h">
-      <Filter>Source Files\Discord\NotMine</Filter>
+      <Filter>Source Files\Discord\SDK</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Discord\overlay_manager.h">
-      <Filter>Source Files\Discord\NotMine</Filter>
+      <Filter>Source Files\Discord\SDK</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Discord\relationship_manager.h">
-      <Filter>Source Files\Discord\NotMine</Filter>
+      <Filter>Source Files\Discord\SDK</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Discord\storage_manager.h">
-      <Filter>Source Files\Discord\NotMine</Filter>
+      <Filter>Source Files\Discord\SDK</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Discord\store_manager.h">
-      <Filter>Source Files\Discord\NotMine</Filter>
+      <Filter>Source Files\Discord\SDK</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Discord\types.h">
-      <Filter>Source Files\Discord\NotMine</Filter>
+      <Filter>Source Files\Discord\SDK</Filter>
     </ClInclude>
     <ClInclude Include="..\include\Discord\user_manager.h">
-      <Filter>Source Files\Discord\NotMine</Filter>
+      <Filter>Source Files\Discord\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\Discord\voice_manager.h">
+      <Filter>Source Files\Discord\SDK</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
