@@ -7,6 +7,7 @@
 #include "FrameRateController.h"
 #include "SceneManager.h"
 #include "DiscordRichPresence.h"
+#include "GUI.h"
 
 Application* Application::instance_ = 0;
 
@@ -33,6 +34,7 @@ void Application::Initialize()
 	Camera::getInstance()->Initialize();
 	Renderer::getInstance()->Initialize();
 	SceneManager::getInstance()->SetScene("../Data/Scenes/Default.json");
+	GUI::getInstance()->Initialize();
 
 	DiscordRichPresence::getInstance()->Initialize();
 }
@@ -73,5 +75,6 @@ void Application::Shutdown()
 
 	isRunning_ = false;
 }
+
 
 

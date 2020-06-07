@@ -2,6 +2,7 @@
 #define APPLICATION_H
 
 #include "ISystem.h"
+#include "AntTweakBar/AntTweakBar.h"
 
 #include <Windows.h>
 

@@ -1,5 +1,6 @@
 #include "InputManager.h"
 #include "RenderView.h"
+#include "AntTweakBar/AntTweakBar.h"
 
 InputManager* InputManager::instance_ = 0;
 
@@ -15,6 +16,8 @@ void InputManager::Initialize()
 
 bool InputManager::HandleInputMessage(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
+	if (TwEventWin(hWnd, msg, wParam, lParam))
+		return true;
 
 	switch (msg)
 	{

@@ -180,6 +180,9 @@
     <ClCompile Include="..\include\Discord\voice_manager.cpp">
       <Filter>Source Files\Discord\SDK</Filter>
     </ClCompile>
+    <ClCompile Include="..\src\GUI.cpp">
+      <Filter>Source Files\Graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\Application.h">
@@ -316,6 +319,9 @@
     </ClInclude>
     <ClInclude Include="..\include\Discord\voice_manager.h">
       <Filter>Source Files\Discord\SDK</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\GUI.h">
+      <Filter>Source Files\Graphics</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

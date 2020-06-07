@@ -23,9 +23,9 @@ public:
 	MATERIAL_TYPE getType() const;
 
 private:
-	glm::vec3 diffuse_;
-	glm::vec3 ambient_;
-	glm::vec3 specular_;
+	glm::vec3 diffuse_ = glm::vec3(1.0f, 1.0f, 1.0f);
+	glm::vec3 ambient_ = glm::vec3(0.0f, 0.0f, 0.0f);
+	glm::vec3 specular_ = glm::vec3(1.0f, 1.0f, 1.0f);
 	MATERIAL_TYPE type_;
 };
 

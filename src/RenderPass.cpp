@@ -2,6 +2,7 @@
 #include "Renderer.h"
 
 #include "LightPass.h"
+#include "GUI.h"
 
 RenderPass::RenderPass()
 {
@@ -18,20 +19,52 @@ void RenderPass::Apply()
 {
 	program_->UseProgram();
 
-	//TODO: Allow to switch between different final buffers (with ImGui?)
-	Renderer::getInstance()->getBuffer("LightBuffer")->BindFrameBuffer();
-	GLuint FinalTexture = Renderer::getInstance()->getBuffer("LightBuffer")->getTexturesList()[LightPass::TexturesOut::LightingOut];
-
-	Renderer::getInstance()->getBuffer("GeometryBuffer")->BindFrameBuffer();
-	GLuint NormalTexture = Renderer::getInstance()->getBuffer("GeometryBuffer")->getTexturesList()[GeometryPass::TexturesOut::Normal];
-
+	GLuint finalTexture = 0;
+	switch (GUI::getInstance()->getRenderMode())
+	{
+		case RenderMode::FINAL:
+		{
+			Renderer::getInstance()->getBuffer("LightBuffer")->BindFrameBuffer();
+			finalTexture = Renderer::getInstance()->getBuffer("LightBuffer")->getTexturesList()[LightPass::TexturesOut::LightingOut];
+			break;
+		}
+		case RenderMode::POSITION:
+		{
+			Renderer::getInstance()->getBuffer("GeometryBuffer")->BindFrameBuffer();
+			finalTexture = Renderer::getInstance()->getBuffer("GeometryBuffer")->getTexturesList()[GeometryPass::TexturesOut::Position];
+			break;
+		}
+		case RenderMode::NORMAL:
+		{
+			Renderer::getInstance()->getBuffer("GeometryBuffer")->BindFrameBuffer();
+			finalTexture = Renderer::getInstance()->getBuffer("GeometryBuffer")->getTexturesList()[GeometryPass::TexturesOut::Normal];
+			break;
+		}
+		case RenderMode::DIFFUSE:
+		{
+			Renderer::getInstance()->getBuffer("GeometryBuffer")->BindFrameBuffer();
+			finalTexture = Renderer::getInstance()->getBuffer("GeometryBuffer")->getTexturesList()[GeometryPass::TexturesOut::DiffuseColor];
+			break;
+		}
+		case RenderMode::SPECULAR:
+		{
+			Renderer::getInstance()->getBuffer("GeometryBuffer")->BindFrameBuffer();
+			finalTexture = Renderer::getInstance()->getBuffer("GeometryBuffer")->getTexturesList()[GeometryPass::TexturesOut::SpecularColor];
+			break;
+		}
+		case RenderMode::AMBIENT:
+		{
+			Renderer::getInstance()->getBuffer("GeometryBuffer")->BindFrameBuffer();
+			finalTexture = Renderer::getInstance()->getBuffer("GeometryBuffer")->getTexturesList()[GeometryPass::TexturesOut::AmbientColor];
+			break;
+		}
+	}
 
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
-
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	glActiveTexture(GL_TEXTURE2);
-	glBindTexture(GL_TEXTURE_2D, FinalTexture);
+	glBindTexture(GL_TEXTURE_2D, finalTexture);
 
 	program_->setUniform("TextureToRender", 2);
 

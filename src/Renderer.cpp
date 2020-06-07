@@ -3,8 +3,7 @@
 #include "Renderer.h"
 #include "RenderView.h"
 #include "Camera.h"
-
-
+#include "GUI.h"
 
 Renderer* Renderer::instance_ = 0;
 
@@ -101,6 +100,7 @@ void Renderer::Update(float dt)
 	RenderPass_->Apply();
 
 	glUseProgram(0);
+	GUI::getInstance()->Update();
 
 	SwapBuffers(deviceContext_);	
 }
