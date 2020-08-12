@@ -5,6 +5,11 @@
 
 #include <string>
 #include <thread>
+
+#ifndef DISCORD_ENABLED
+#define DISCORD_ENABLED false
+#endif
+
 struct DiscordState {
 	discord::User currentUser;
 	std::unique_ptr<discord::Core> core;

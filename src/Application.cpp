@@ -9,6 +9,8 @@
 #include "DiscordRichPresence.h"
 #include "GUI.h"
 
+
+
 Application* Application::instance_ = 0;
 
 void Application::RunApplication(HINSTANCE hinstance, int show, int WindowWidth, int WindowHeight, const char * WindowTitle)
@@ -36,7 +38,9 @@ void Application::Initialize()
 	SceneManager::getInstance()->SetScene("../Data/Scenes/Default.json");
 	GUI::getInstance()->Initialize();
 
-	DiscordRichPresence::getInstance()->Initialize();
+	#if DISCORD_ENABLED
+		DiscordRichPresence::getInstance()->Initialize();
+	#endif
 }
 
 void Application::Update(float dt)
@@ -59,7 +63,9 @@ void Application::Update(float dt)
 		Camera::getInstance()->Update(dt);
 		Renderer::getInstance()->Update(dt);
 
-		DiscordRichPresence::getInstance()->Update(dt);
+		#if DISCORD_ENABLED
+			DiscordRichPresence::getInstance()->Update(dt);
+		#endif		
 
 		FrameRateController::getInstance()->EndFrame();
 	}
@@ -67,7 +73,9 @@ void Application::Update(float dt)
 
 void Application::Shutdown()
 {		
-	DiscordRichPresence::getInstance()->Shutdown();
+	#if DISCORD_ENABLED
+		DiscordRichPresence::getInstance()->Shutdown();
+	#endif
 	Renderer::getInstance()->Shutdown();
 	Camera::getInstance()->Shutdown();
 	InputManager::getInstance()->Shutdown();
