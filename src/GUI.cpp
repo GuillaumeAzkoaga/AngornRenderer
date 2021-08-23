@@ -20,7 +20,7 @@ void GUI::Initialize()
 		{ RenderMode::SPECULAR, "Specular" },
 		{ RenderMode::AMBIENT, "Ambient" } };
 	TwType BufferMode = TwDefineEnum("BufferType", Buffers,RenderMode::MAX_RENDER_MODES_AMOUNT);
-	TwAddVarRW(GUI, "Buffer", BufferMode, &renderMode_, " keyIncr='1' help='Change the texture to be displayed' ");
+	TwAddVarRW(GUI, "Buffer", BufferMode, &renderMode_, "help='Change the texture to be displayed' ");
 
 }
 

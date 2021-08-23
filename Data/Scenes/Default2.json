@@ -38,7 +38,7 @@
         "z": 50
       },
       "rotation": {
-        "angle": 30.0,
+        "angle": 90.0,
         "axis": {
           "x": 0,
           "y": 1,
@@ -57,9 +57,9 @@
         "z": 0
       },
       "scale": {
-        "x": 200,
-        "y": 200,
-        "z": 200
+        "x": 50,
+        "y": 50,
+        "z": 50
       },
       "rotation": {
         "angle": 0.0,
@@ -70,7 +70,7 @@
         }
       },
       "mesh": "../Data/Meshes/sphere_8_4.obj",
-      "material": 2
+      "material": 1
     }
   ]
 
